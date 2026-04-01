@@ -1,210 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier 4 – PARCINFO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  background: #f8f9fb;
+  color: #1c2333;
+}
+
+nav {
+  background: #0f1b2d;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  margin-top: 2rem;
+  color: #0f1b2d;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 1rem;
+}
+
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.mission {
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.video iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+footer {
+  background: #0f1b2d;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">← Retour au portfolio</a>
+</nav>
+
+<div class="container">
+
+<h1>Atelier 4 – Gestion de parc informatique (PARCINFO)</h1>
+
 <!-- CONTEXTE -->
-<section id="contexte">
-  <div class="section-label">01 — Contexte</div>
-  <h2>Contexte et objectifs</h2>
+<div class="section-label">01 — Contexte</div>
+<h2>Contexte et objectifs</h2>
 
-  <p>
-    TiersLieux86 est une association qui propose des espaces de travail partagés (ETP) pour des entreprises et des indépendants.
-    Chaque site dispose d’une infrastructure réseau complète avec des serveurs, un réseau local, un accès internet et des services mutualisés.
-  </p>
+<p>
+Dans le cadre de l’atelier 4, l’objectif était de mettre en place une solution de gestion de parc informatique
+dans un environnement simulant une infrastructure professionnelle (TiersLieux).
+</p>
 
-  <p>
-    L’infrastructure repose sur plusieurs réseaux distincts :
-    un LAN utilisateurs (192.168.x.x), un réseau serveurs (10.x.x.x) et une DMZ pour les services accessibles depuis internet.
-    Elle inclut notamment un annuaire Active Directory, un serveur web et un serveur de gestion de parc informatique. :contentReference[oaicite:2]{index=2}
-  </p>
+<p>
+L’infrastructure comprend plusieurs serveurs dédiés :
+GLPI (application), MariaDB (base de données) et HAProxy (répartition de charge).
+</p>
 
-  <p>
-    Dans ce contexte, l’objectif de l’atelier est de mettre en place une solution de gestion de parc informatique
-    permettant de suivre les équipements, gérer les incidents et assurer la continuité de service.
-  </p>
-
-  <div class="cards">
-    <div class="card">
-      <div class="card-icon">🖥️</div>
-      <h3>GLPI</h3>
-      <p>Gestion du parc informatique et des tickets d’incidents</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🗄️</div>
-      <h3>MariaDB</h3>
-      <p>Base de données contenant les informations GLPI</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌐</div>
-      <h3>HAProxy</h3>
-      <p>Répartition de charge et haute disponibilité</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💻</div>
-      <h3>GLPI Agent</h3>
-      <p>Inventaire automatique des postes clients</p>
-    </div>
-  </div>
-</section>
+<p>
+Le but est de gérer les équipements informatiques, les incidents utilisateurs
+et d’assurer la continuité de service.
+</p>
 
 <!-- MISSIONS -->
-<section id="missions">
-  <div class="section-label">02 — Missions</div>
-  <h2>Travaux réalisés</h2>
+<div class="section-label">02 — Missions</div>
+<h2>Travaux réalisés</h2>
 
-  <div class="missions">
+<div class="card mission">
+<strong>M1 — Installation de GLPI</strong>
+<p>
+Installation de GLPI sur serveur Linux avec Apache, PHP et MariaDB.
+Configuration de l’accès web et mise en service de la plateforme.
+</p>
+</div>
 
-    <div class="mission">
-      <span class="mission-num">M1</span>
-      <div>
-        <h3>Installation de GLPI</h3>
-        <p>
-          Mise en place du serveur GLPI avec Apache, PHP et MariaDB.
-          Configuration de l’interface web et accès utilisateur.
-        </p>
-      </div>
-    </div>
+<div class="card mission">
+<strong>M2 — Inventaire automatique</strong>
+<p>
+Déploiement du GLPI Agent sur un poste Windows 11 permettant la remontée automatique
+des informations (matériel, système, utilisateur).
+</p>
+</div>
 
-    <div class="mission">
-      <span class="mission-num">M2</span>
-      <div>
-        <h3>Inventaire du parc</h3>
-        <p>
-          Déploiement du GLPI Agent sur un poste Windows 11 afin de remonter automatiquement
-          les informations matérielles et logicielles dans GLPI.
-        </p>
-      </div>
-    </div>
+<div class="card mission">
+<strong>M3 — Gestion des incidents</strong>
+<p>
+Configuration du système de tickets dans GLPI afin de gérer les demandes utilisateurs
+et simuler un environnement de support informatique.
+</p>
+</div>
 
-    <div class="mission">
-      <span class="mission-num">M3</span>
-      <div>
-        <h3>Gestion des incidents</h3>
-        <p>
-          Création et suivi de tickets dans GLPI pour simuler un environnement de support utilisateur.
-        </p>
-      </div>
-    </div>
+<div class="card mission">
+<strong>M4 — Sauvegarde</strong>
+<p>
+Réalisation d’une sauvegarde de la base de données avec mysqldump,
+permettant une restauration en cas de panne.
+</p>
+</div>
 
-    <div class="mission">
-      <span class="mission-num">M4</span>
-      <div>
-        <h3>Sauvegarde de la base</h3>
-        <p>
-          Réalisation d’une sauvegarde de la base MariaDB avec mysqldump
-          afin de garantir la récupération des données en cas de panne.
-        </p>
-      </div>
-    </div>
+<div class="card mission">
+<strong>M5 — Haute disponibilité</strong>
+<p>
+Mise en place de HAProxy avec deux serveurs GLPI.
+Test de panne validé : arrêt d’un serveur sans interruption du service.
+</p>
+</div>
 
-    <div class="mission">
-      <span class="mission-num">M5</span>
-      <div>
-        <h3>Haute disponibilité</h3>
-        <p>
-          Mise en place de HAProxy avec deux serveurs GLPI en backend.
-          Test de panne validant la continuité du service via une adresse unique.
-        </p>
-      </div>
-    </div>
+<!-- RESULTATS -->
+<div class="section-label">03 — Résultats</div>
+<h2>Résultats obtenus</h2>
 
-  </div>
-</section>
+<ul>
+<li>Inventaire automatique des postes fonctionnel</li>
+<li>Système de tickets opérationnel</li>
+<li>Sauvegarde de la base de données réalisée</li>
+<li>Continuité de service assurée avec HAProxy</li>
+</ul>
 
 <!-- DOCUMENTS -->
-<section id="documents">
-  <div class="section-label">03 — Documents</div>
-  <h2>Ressources</h2>
+<div class="section-label">04 — Documents</div>
+<h2>Ressources</h2>
 
-  <ul class="links-list">
+<ul>
+<li><a href="Contexte-TiersLieux_86.pdf" target="_blank">Contexte TiersLieux</a></li>
+<li><a href="Documentation chasseneuil.pdf" target="_blank">Documentation réseau</a></li>
+<li><a href="Atelier4_CompteRendu_Complet.pdf" target="_blank">Compte rendu complet</a></li>
+<li><a href="https://github.com/USER75MA/Atelier4-PARCINFO" target="_blank">GitHub du projet</a></li>
+</ul>
 
-    <li>
-      <a href="Contexte-TiersLieux_86.pdf" target="_blank">
-        <span class="link-icon">📄</span>
-        <span>
-          <div>Contexte TiersLieux86</div>
-          <div class="link-desc">Présentation de l’infrastructure et des services</div>
-        </span>
-      </a>
-    </li>
+<!-- COMPETENCES -->
+<div class="section-label">05 — Compétences</div>
+<h2>Compétences mobilisées</h2>
 
-    <li>
-      <a href="Documentation chasseneuil.pdf" target="_blank">
-        <span class="link-icon">📋</span>
-        <span>
-          <div>Documentation Chasseneuil</div>
-          <div class="link-desc">Architecture réseau et organisation du site</div>
-        </span>
-      </a>
-    </li>
-
-    <li>
-      <a href="https://github.com/USER75MA/Atelier4-PARCINFO" target="_blank">
-        <span class="link-icon">💾</span>
-        <span>
-          <div>Dépôt GitHub</div>
-          <div class="link-desc">Configurations et documentation technique</div>
-        </span>
-      </a>
-    </li>
-
-  </ul>
-</section>
-
-<!-- COMPÉTENCES -->
-<section id="competences">
-  <div class="section-label">04 — Compétences</div>
-  <h2>Compétences mobilisées</h2>
-
-  <div class="competences">
-
-    <div class="comp">
-      <span class="comp-code">B1.1</span>
-      <span class="comp-label">Gérer le patrimoine informatique</span>
-      <span class="comp-detail">Inventaire GLPI</span>
-    </div>
-
-    <div class="comp">
-      <span class="comp-code">B1.2</span>
-      <span class="comp-label">Répondre aux incidents</span>
-      <span class="comp-detail">Tickets GLPI</span>
-    </div>
-
-    <div class="comp">
-      <span class="comp-code">B2.2</span>
-      <span class="comp-label">Déployer une solution</span>
-      <span class="comp-detail">GLPI, MariaDB, HAProxy</span>
-    </div>
-
-    <div class="comp">
-      <span class="comp-code">B2.3</span>
-      <span class="comp-label">Superviser une infrastructure</span>
-      <span class="comp-detail">Tests et dépannage</span>
-    </div>
-
-    <div class="comp">
-      <span class="comp-code">B3.4</span>
-      <span class="comp-label">Assurer la disponibilité</span>
-      <span class="comp-detail">Haute disponibilité HAProxy</span>
-    </div>
-
-  </div>
-</section>
+<ul>
+<li>B1.1 — Gestion du patrimoine informatique</li>
+<li>B1.2 — Gestion des incidents</li>
+<li>B2.2 — Déploiement de solution</li>
+<li>B2.3 — Supervision et dépannage</li>
+<li>B3.4 — Haute disponibilité</li>
+</ul>
 
 <!-- DEMO -->
-<section id="demo">
-  <div class="section-label">05 — Démonstration</div>
-  <h2>Vidéo</h2>
+<div class="section-label">06 — Démonstration</div>
+<h2>Vidéo</h2>
 
-  <p>
-    La démonstration présente :
-    l’accès à GLPI via HAProxy,
-    l’inventaire automatique,
-    la création de tickets
-    et le test de panne validant la haute disponibilité.
-  </p>
+<p>
+La vidéo présente l’accès à GLPI, l’inventaire, les tickets
+et le test de panne validant la haute disponibilité.
+</p>
 
-  <div class="video-placeholder">
-    <div class="play">▶</div>
-    <span>Ajoute ta vidéo ici</span>
-  </div>
-</section>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/SGogW9vFrEw" frameborder="0" allowfullscreen></iframe>
+</div>
+
+</div>
+
+<footer>
+Portfolio BTS SIO SISR – Atelier 4
+</footer>
+
+</body>
+</html>
