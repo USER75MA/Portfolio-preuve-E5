@@ -3,89 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atelier 4 – PARCINFO</title>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Portfolio – Atelier 4 PARCINFO</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+/* ===== DESIGN IDENTIQUE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:#0f1b2d;
+  --blue:#1a56db;
+  --blue-l:#e8f0fe;
+  --gray:#6b7280;
+  --light:#f8f9fb;
+  --white:#ffffff;
+  --border:#e5e7eb;
+  --text:#1c2333;
+  --radius:10px;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
-  margin: 0;
-  background: #f8f9fb;
-  color: #1c2333;
+  background: var(--light);
+  color: var(--text);
 }
 
+/* NAV */
 nav {
-  background: #0f1b2d;
-  color: white;
+  background: var(--navy);
   padding: 1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  color:white;
 }
 
-nav a {
-  color: #cbd5e1;
-  text-decoration: none;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
-}
-
-h1 {
-  font-size: 2.2rem;
+.wrapper {
+  max-width:860px;
+  margin:auto;
+  padding:2rem;
 }
 
 h2 {
-  margin-top: 2rem;
-  color: #0f1b2d;
+  margin-top:2rem;
+  border-bottom:1px solid var(--border);
+  padding-bottom:.5rem;
 }
 
-.section-label {
-  font-size: 0.8rem;
-  color: #6b7280;
-  margin-top: 1rem;
-}
-
-.card {
-  background: white;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  margin-bottom: 1rem;
-}
-
+/* MISSIONS */
 .mission {
-  margin-bottom: 1rem;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1rem;
+  margin-bottom:.8rem;
 }
 
-ul {
-  padding-left: 1.2rem;
-}
-
+/* VIDEO */
 .video {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: 10px;
-  margin-top: 1rem;
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  margin-top:1rem;
 }
 
 .video iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-
-footer {
-  background: #0f1b2d;
-  color: #94a3b8;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
+  position:absolute;
+  width:100%;
+  height:100%;
 }
 </style>
 </head>
@@ -93,128 +77,76 @@ footer {
 <body>
 
 <nav>
-<a href="index.html">← Retour au portfolio</a>
+Portfolio – Atelier 4
 </nav>
 
-<div class="container">
+<div class="wrapper">
 
-<h1>Atelier 4 – Gestion de parc informatique (PARCINFO)</h1>
+<h1>Atelier 4 – Gestion de parc informatique (GLPI)</h1>
 
 <!-- CONTEXTE -->
-<div class="section-label">01 — Contexte</div>
-<h2>Contexte et objectifs</h2>
-
+<h2>Contexte</h2>
 <p>
 Dans le cadre de l’atelier 4, l’objectif était de mettre en place une solution de gestion de parc informatique
 dans un environnement simulant une infrastructure professionnelle (TiersLieux).
 </p>
 
 <p>
-L’infrastructure comprend plusieurs serveurs dédiés :
-GLPI (application), MariaDB (base de données) et HAProxy (répartition de charge).
-</p>
-
-<p>
-Le but est de gérer les équipements informatiques, les incidents utilisateurs
-et d’assurer la continuité de service.
+L’infrastructure repose sur plusieurs serveurs distincts :
+serveur GLPI, serveur MariaDB et serveur HAProxy,
+permettant de séparer les rôles et d’assurer la continuité de service.
 </p>
 
 <!-- MISSIONS -->
-<div class="section-label">02 — Missions</div>
-<h2>Travaux réalisés</h2>
+<h2>Missions réalisées</h2>
 
-<div class="card mission">
+<div class="mission">
 <strong>M1 — Installation de GLPI</strong>
-<p>
-Installation de GLPI sur serveur Linux avec Apache, PHP et MariaDB.
-Configuration de l’accès web et mise en service de la plateforme.
-</p>
+<p>Installation de GLPI avec Apache, PHP et MariaDB.</p>
 </div>
 
-<div class="card mission">
+<div class="mission">
 <strong>M2 — Inventaire automatique</strong>
-<p>
-Déploiement du GLPI Agent sur un poste Windows 11 permettant la remontée automatique
-des informations (matériel, système, utilisateur).
-</p>
+<p>Déploiement du GLPI Agent permettant la remontée des postes.</p>
 </div>
 
-<div class="card mission">
+<div class="mission">
 <strong>M3 — Gestion des incidents</strong>
-<p>
-Configuration du système de tickets dans GLPI afin de gérer les demandes utilisateurs
-et simuler un environnement de support informatique.
-</p>
+<p>Création de tickets pour simuler le support utilisateur.</p>
 </div>
 
-<div class="card mission">
+<div class="mission">
 <strong>M4 — Sauvegarde</strong>
-<p>
-Réalisation d’une sauvegarde de la base de données avec mysqldump,
-permettant une restauration en cas de panne.
-</p>
+<p>Sauvegarde de la base MariaDB avec mysqldump.</p>
 </div>
 
-<div class="card mission">
+<div class="mission">
 <strong>M5 — Haute disponibilité</strong>
-<p>
-Mise en place de HAProxy avec deux serveurs GLPI.
-Test de panne validé : arrêt d’un serveur sans interruption du service.
-</p>
+<p>Mise en place de HAProxy avec test de panne validé.</p>
 </div>
 
 <!-- RESULTATS -->
-<div class="section-label">03 — Résultats</div>
-<h2>Résultats obtenus</h2>
+<h2>Résultats</h2>
 
 <ul>
-<li>Inventaire automatique des postes fonctionnel</li>
-<li>Système de tickets opérationnel</li>
-<li>Sauvegarde de la base de données réalisée</li>
-<li>Continuité de service assurée avec HAProxy</li>
+<li>Inventaire fonctionnel</li>
+<li>Tickets opérationnels</li>
+<li>Haute disponibilité validée</li>
 </ul>
 
-<!-- DOCUMENTS -->
-<div class="section-label">04 — Documents</div>
-<h2>Ressources</h2>
-
-<ul>
-<li><a href="Contexte-TiersLieux_86.pdf" target="_blank">Contexte TiersLieux</a></li>
-<li><a href="Documentation chasseneuil.pdf" target="_blank">Documentation réseau</a></li>
-<li><a href="Atelier4_CompteRendu_Complet.pdf" target="_blank">Compte rendu complet</a></li>
-<li><a href="https://github.com/USER75MA/Atelier4-PARCINFO" target="_blank">GitHub du projet</a></li>
-</ul>
-
-<!-- COMPETENCES -->
-<div class="section-label">05 — Compétences</div>
-<h2>Compétences mobilisées</h2>
-
-<ul>
-<li>B1.1 — Gestion du patrimoine informatique</li>
-<li>B1.2 — Gestion des incidents</li>
-<li>B2.2 — Déploiement de solution</li>
-<li>B2.3 — Supervision et dépannage</li>
-<li>B3.4 — Haute disponibilité</li>
-</ul>
-
-<!-- DEMO -->
-<div class="section-label">06 — Démonstration</div>
-<h2>Vidéo</h2>
+<!-- VIDEO -->
+<h2>Démonstration</h2>
 
 <p>
-La vidéo présente l’accès à GLPI, l’inventaire, les tickets
-et le test de panne validant la haute disponibilité.
+La vidéo présente le fonctionnement complet de la solution :
+inventaire, tickets et test de panne.
 </p>
 
 <div class="video">
-<iframe src="https://www.youtube.com/embed/SGogW9vFrEw" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/TA_VIDEO_ICI" frameborder="0" allowfullscreen></iframe>
 </div>
 
 </div>
-
-<footer>
-Portfolio BTS SIO SISR – Atelier 4
-</footer>
 
 </body>
 </html>
