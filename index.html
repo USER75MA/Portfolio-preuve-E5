@@ -3,581 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mehdi Trabelsi – Portfolio BTS SIO SISR</title>
+<title>Portfolio – BTS SIO SISR</title>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  background: #f8f9fb;
+  color: #1c2333;
+}
 
-  :root {
-    --navy:   #0f1b2d;
-    --blue:   #1a56db;
-    --blue-l: #e8f0fe;
-    --gray:   #6b7280;
-    --light:  #f8f9fb;
-    --white:  #ffffff;
-    --border: #e5e7eb;
-    --text:   #1c2333;
-    --radius: 10px;
-    --green:  #059669;
-    --green-l:#d1fae5;
-  }
+/* NAV */
+nav {
+  background: #0f1b2d;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-left: 1rem;
+}
 
-  html { scroll-behavior: smooth; }
+/* HERO */
+.hero {
+  background: #0f1b2d;
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero span {
+  color: #7dd3fc;
+}
+.hero p {
+  color: #94a3b8;
+  max-width: 600px;
+  margin: auto;
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--light);
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.7;
-  }
+/* CONTENT */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--navy);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2.5rem;
-    height: 60px;
-    box-shadow: 0 2px 12px rgba(0,0,0,.25);
-  }
-  .nav-brand {
-    font-family: 'DM Mono', monospace;
-    font-size: .85rem;
-    color: #7dd3fc;
-    letter-spacing: .06em;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-size: .9rem;
-    font-weight: 400;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--white); }
+h2 {
+  margin-top: 2rem;
+  color: #0f1b2d;
+}
 
-  /* ── HERO ── */
-  .hero-wrap { background: var(--navy); }
-  .hero {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 6rem 2.5rem 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: .78rem;
-    color: #7dd3fc;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    background: rgba(125,211,252,.08);
-    border: 1px solid rgba(125,211,252,.2);
-    padding: .3rem .8rem;
-    border-radius: 4px;
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 600;
-    line-height: 1.15;
-    margin-bottom: 1rem;
-    color: var(--white);
-  }
-  .hero h1 span { color: #7dd3fc; }
-  .hero p {
-    color: #94a3b8;
-    font-size: 1.05rem;
-    max-width: 580px;
-    margin-bottom: 2rem;
-    font-weight: 300;
-  }
-  .hero-links {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    margin-bottom: 2.5rem;
-  }
-  .hero-links a {
-    display: flex; align-items: center; gap: .5rem;
-    background: rgba(125,211,252,.1);
-    border: 1px solid rgba(125,211,252,.25);
-    color: #7dd3fc;
-    text-decoration: none;
-    font-size: .85rem;
-    font-family: 'DM Mono', monospace;
-    padding: .45rem 1rem;
-    border-radius: 6px;
-    transition: background .2s, border-color .2s;
-  }
-  .hero-links a:hover { background: rgba(125,211,252,.18); border-color: rgba(125,211,252,.5); }
-  .hero-meta {
-    display: flex; gap: 2rem; flex-wrap: wrap;
-    font-size: .85rem; color: #64748b;
-  }
-  .hero-meta span { display: flex; align-items: center; gap: .4rem; }
-  .hero-meta strong { color: #94a3b8; }
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
 
-  /* ── WRAPPER ── */
-  .wrapper {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 2.5rem 5rem;
-  }
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+.card p {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
 
-  /* ── SECTION ── */
-  section { margin-top: 4rem; }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: .6rem;
-  }
-  h2 {
-    font-size: 1.55rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 1.2rem;
-    padding-bottom: .7rem;
-    border-bottom: 2px solid var(--border);
-  }
-  p { color: #374151; margin-bottom: .8rem; }
-
-  /* ── PROJET CARDS ── */
-  .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
-  .project-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem 1.6rem;
-    text-decoration: none;
-    color: var(--text);
-    transition: box-shadow .2s, transform .2s, border-color .2s;
-    display: flex; flex-direction: column; gap: .6rem;
-  }
-  .project-card:hover {
-    box-shadow: 0 6px 24px rgba(26,86,219,.1);
-    transform: translateY(-3px);
-    border-color: var(--blue);
-  }
-  .project-card-top { display: flex; align-items: center; justify-content: space-between; }
-  .project-icon {
-    width: 40px; height: 40px;
-    background: var(--blue-l);
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-  }
-  .project-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem;
-    letter-spacing: .06em;
-    padding: .25rem .65rem;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  .badge-atelier { background: var(--blue-l); color: var(--blue); }
-  .badge-ap      { background: #fef3c7; color: #92400e; }
-  .badge-stage   { background: var(--green-l); color: var(--green); }
-  .badge-veille  { background: #f3e8ff; color: #6d28d9; }
-  .project-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); }
-  .project-card .desc { font-size: .84rem; color: var(--gray); line-height: 1.55; }
-  .project-card .tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .3rem; }
-  .tag {
-    font-size: .72rem;
-    font-family: 'DM Mono', monospace;
-    background: var(--light);
-    border: 1px solid var(--border);
-    color: var(--gray);
-    padding: .18rem .55rem;
-    border-radius: 4px;
-  }
-  .card-arrow {
-    font-size: .8rem;
-    color: var(--blue);
-    margin-top: auto;
-    font-weight: 500;
-    display: flex; align-items: center; gap: .3rem;
-  }
-
-  /* ── STAGES ── */
-  .stages { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
-  .stage {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--green);
-    border-radius: var(--radius);
-    padding: 1.2rem 1.4rem;
-    display: flex; gap: 1.2rem; align-items: flex-start;
-  }
-  .stage-icon { font-size: 1.5rem; flex-shrink: 0; }
-  .stage h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
-  .stage p  { font-size: .85rem; color: var(--gray); margin-bottom: 0; }
-  .stage-period {
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    color: var(--green);
-    background: var(--green-l);
-    padding: .2rem .55rem;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: .4rem;
-  }
-
-  /* ── COMPÉTENCES SUMMARY ── */
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: 1rem; }
-  .comp-item {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--blue);
-    border-radius: var(--radius);
-    padding: .75rem 1rem;
-    font-size: .85rem;
-  }
-  .comp-item strong {
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    color: var(--blue);
-    display: block;
-    margin-bottom: .2rem;
-  }
-  .comp-item span { color: var(--text); font-weight: 500; }
-
-  /* ── E5 BANNER ── */
-  .e5-banner {
-    background: linear-gradient(135deg, var(--navy) 60%, #1a3a6b);
-    border-radius: var(--radius);
-    padding: 2rem 2rem;
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .e5-banner-text h3 { color: var(--white); font-size: 1.1rem; font-weight: 600; }
-  .e5-banner-text p  { color: #94a3b8; font-size: .88rem; margin: .3rem 0 0; }
-  .e5-banner a {
-    display: inline-flex; align-items: center; gap: .5rem;
-    background: var(--blue);
-    color: var(--white);
-    text-decoration: none;
-    padding: .65rem 1.4rem;
-    border-radius: 7px;
-    font-size: .9rem;
-    font-weight: 500;
-    transition: background .2s;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .e5-banner a:hover { background: #1546b8; }
-
-  /* ── VEILLE ── */
-  .veille-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .8rem; margin-top: 1rem; }
-  .veille-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.2rem;
-    text-align: center;
-  }
-  .veille-card .vicon { font-size: 1.6rem; margin-bottom: .5rem; }
-  .veille-card h4 { font-size: .88rem; font-weight: 600; color: var(--navy); }
-  .veille-card p  { font-size: .78rem; color: var(--gray); margin: .3rem 0 0; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: #64748b;
-    text-align: center;
-    padding: 2rem;
-    font-size: .82rem;
-    margin-top: 5rem;
-  }
-  footer a { color: #7dd3fc; text-decoration: none; }
-
-  @media (max-width: 640px) {
-    .project-grid, .comp-grid, .veille-cards { grid-template-columns: 1fr; }
-    nav { padding: 0 1.2rem; }
-    .nav-links { gap: 1rem; }
-    .hero, .wrapper { padding-left: 1.2rem; padding-right: 1.2rem; }
-  }
+/* FOOTER */
+footer {
+  background: #0f1b2d;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
 </style>
 </head>
+
 <body>
 
 <nav>
-  <a class="nav-brand" href="#top">MEHDI TRABELSI / BTS SIO SISR</a>
-  <ul class="nav-links">
-    <li><a href="#projets">Projets</a></li>
-    <li><a href="#stages">Stages</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#veille">Veille</a></li>
-    <li><a href="e5.html">Épreuve E5</a></li>
-  </ul>
+<div>Portfolio BTS SIO</div>
+<div>
+<a href="e5.html">E5</a>
+</div>
 </nav>
 
 <!-- HERO -->
-<div class="hero-wrap">
-  <div class="hero" id="top">
-    <div class="hero-tag">Portfolio BTS SIO – Option SISR</div>
-    <h1>Mehdi <span>Trabelsi</span></h1>
-    <p>Étudiant en BTS Services Informatiques aux Organisations, option SISR, au CNED. Passionné par les infrastructures réseaux, la gestion de systèmes et la cybersécurité, je construis mes compétences à travers des projets techniques concrets réalisés en formation et en entreprise.</p>
-    <div class="hero-links">
-      <a href="https://github.com/USER75MA" target="_blank">⌥ GitHub</a>
-      <a href="https://www.linkedin.com/in/mehdi-trabelsi-555643280/" target="_blank">in LinkedIn</a>
-      <a href="e5.html">📋 Épreuve E5</a>
-    </div>
-    <div class="hero-meta">
-      <span>🎓 <strong>Formation :</strong> BTS SIO SISR – CNED</span>
-      <span>📅 <strong>Session :</strong> 2025–2026</span>
-      <span>📍 <strong>France</strong></span>
-    </div>
-  </div>
+<div class="hero">
+<h1>Mehdi Trabelsi<br><span>BTS SIO SISR</span></h1>
+<p>
+Portfolio de parcours de professionnalisation présentant mes réalisations
+en systèmes et réseaux dans le cadre de l’épreuve E5.
+</p>
 </div>
 
-<div class="wrapper">
+<div class="container">
 
-  <!-- PROJETS -->
-  <section id="projets">
-    <div class="section-label">01 — Réalisations professionnelles</div>
-    <h2>Projets & Ateliers</h2>
-    <p>Ensemble des réalisations réalisées en cours de formation (ateliers de professionnalisation, AP, séquences) et en milieu professionnel (stages).</p>
+<!-- ATELIERS -->
+<h2>Ateliers de professionnalisation</h2>
 
-    <div class="project-grid">
+<div class="grid">
 
-      <a class="project-card" href="atelier2.html">
-        <div class="project-card-top">
-          <div class="project-icon">🖥️</div>
-          <span class="project-badge badge-atelier">ATELIER 2</span>
-        </div>
-        <h3>Gestion du patrimoine informatique</h3>
-        <p class="desc">Inventaire, habilitations d'accès, sauvegardes et conformité avec GLPI dans le contexte lycée.</p>
-        <div class="tags">
-          <span class="tag">GLPI</span>
-          <span class="tag">Windows Server</span>
-          <span class="tag">Active Directory</span>
-          <span class="tag">OCS</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+<a class="card" href="atelier4.html">
+<h3>Atelier 4</h3>
+<p>
+Gestion de parc informatique avec GLPI, haute disponibilité avec HAProxy,
+base de données MariaDB et inventaire automatisé.
+</p>
+</a>
 
-      <a class="project-card" href="atelier4.html">
-        <div class="project-card-top">
-          <div class="project-icon">⚙️</div>
-          <span class="project-badge badge-atelier">ATELIER 4</span>
-        </div>
-        <h3>Parc informatique & haute disponibilité avec GLPI</h3>
-        <p class="desc">Déploiement de GLPI avec MariaDB, inventaire automatique via GLPI Agent et haute disponibilité HAProxy.</p>
-        <div class="tags">
-          <span class="tag">GLPI</span>
-          <span class="tag">HAProxy</span>
-          <span class="tag">MariaDB</span>
-          <span class="tag">Debian</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+<a class="card" href="atelier2.html">
+<h3>Atelier 2</h3>
+<p>
+Intégration d’une entreprise dans une infrastructure réseau :
+VLAN, Active Directory, GPO, partages et sécurité.
+</p>
+</a>
 
-      <a class="project-card" href="ap1.html">
-        <div class="project-card-top">
-          <div class="project-icon">🌐</div>
-          <span class="project-badge badge-ap">AP 1</span>
-        </div>
-        <h3>Mise en place d'une infrastructure réseau</h3>
-        <p class="desc">Architecture complète avec VyOS, Windows Server (DHCP, AD), client Windows et automatisation Powershell.</p>
-        <div class="tags">
-          <span class="tag">VyOS</span>
-          <span class="tag">Windows Server</span>
-          <span class="tag">DHCP</span>
-          <span class="tag">Powershell</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+</div>
 
-      <a class="project-card" href="ap2.html">
-        <div class="project-card-top">
-          <div class="project-icon">📁</div>
-          <span class="project-badge badge-ap">AP 2</span>
-        </div>
-        <h3>Évolution de l'infrastructure pour un nouveau client</h3>
-        <p class="desc">Évolution avec service de fichiers, GPO, iSCSI, NAS et Powershell sur VyOS et Windows Server.</p>
-        <div class="tags">
-          <span class="tag">GPO</span>
-          <span class="tag">iSCSI</span>
-          <span class="tag">NAS</span>
-          <span class="tag">Powershell</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+<!-- STAGES -->
+<h2>Stages</h2>
 
-      <a class="project-card" href="ap3.html">
-        <div class="project-card-top">
-          <div class="project-icon">🔒</div>
-          <span class="project-badge badge-ap">AP 3</span>
-        </div>
-        <h3>Sécurisation de l'infrastructure réseau</h3>
-        <p class="desc">VLAN, routage interVLAN, Etherchannel, Spanning Tree, HSRP, TFTP, NTP et Syslog sur Packet Tracer et VyOS.</p>
-        <div class="tags">
-          <span class="tag">VLAN</span>
-          <span class="tag">HSRP</span>
-          <span class="tag">Packet Tracer</span>
-          <span class="tag">VyOS</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+<div class="grid">
 
-      <a class="project-card" href="stage1.html">
-        <div class="project-card-top">
-          <div class="project-icon">🏥</div>
-          <span class="project-badge badge-stage">STAGE 1</span>
-        </div>
-        <h3>Missions SESAN – GIE e-santé</h3>
-        <p class="desc">Réalisations en milieu professionnel au sein du GIE e-santé SESAN spécialisé dans les systèmes d'information de santé.</p>
-        <div class="tags">
-          <span class="tag">Réseaux</span>
-          <span class="tag">SI santé</span>
-          <span class="tag">Infrastructure</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+<a class="card" href="stage1.html">
+<h3>Stage 1 – SESAN</h3>
+<p>
+Inventaire réseau, cartographie des locaux,
+réorganisation du câblage et préparation NetBox.
+</p>
+</a>
 
-      <a class="project-card" href="stage2.html">
-        <div class="project-card-top">
-          <div class="project-icon">💊</div>
-          <span class="project-badge badge-stage">STAGE 2</span>
-        </div>
-        <h3>Missions Assurance Maladie</h3>
-        <p class="desc">Réalisations en milieu professionnel à l'Assurance Maladie dans un environnement SI institutionnel.</p>
-        <div class="tags">
-          <span class="tag">Support</span>
-          <span class="tag">Infrastructure</span>
-          <span class="tag">SI institutionnel</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+<a class="card" href="stage2.html">
+<h3>Stage 2 – Assurance Maladie</h3>
+<p>
+Préparation de postes, tests matériels et compatibilité
+pour déploiement Linux et migration Windows 11.
+</p>
+</a>
 
-      <a class="project-card" href="veille.html">
-        <div class="project-card-top">
-          <div class="project-icon">📡</div>
-          <span class="project-badge badge-veille">VEILLE</span>
-        </div>
-        <h3>Veille technologique</h3>
-        <p class="desc">Dispositif de veille sur les évolutions des infrastructures réseaux, systèmes et cybersécurité.</p>
-        <div class="tags">
-          <span class="tag">Cybersécurité</span>
-          <span class="tag">Cloud</span>
-          <span class="tag">Réseau</span>
-        </div>
-        <div class="card-arrow">Voir le projet →</div>
-      </a>
+</div>
 
-    </div>
-  </section>
+<!-- VEILLE -->
+<h2>Veille technologique</h2>
 
-  <!-- E5 BANNER -->
-  <div class="e5-banner">
-    <div class="e5-banner-text">
-      <h3>📋 Page dédiée Épreuve E5</h3>
-      <p>Tableau de synthèse, présentation du parcours et accès aux ressources pour la commission d'évaluation.</p>
-    </div>
-    <a href="e5.html">Accéder à la page E5 →</a>
-  </div>
+<div class="grid">
 
-  <!-- STAGES -->
-  <section id="stages">
-    <div class="section-label">02 — Expériences professionnelles</div>
-    <h2>Stages en entreprise</h2>
-    <div class="stages">
-      <div class="stage">
-        <div class="stage-icon">🏥</div>
-        <div>
-          <span class="stage-period">30/12/2024 → 31/01/2025</span>
-          <h3>SESAN – GIE e-santé</h3>
-          <p>Groupement d'Intérêt Économique spécialisé dans les systèmes d'information de santé en Île-de-France. Participation aux missions d'infrastructure réseau et systèmes dans un environnement critique de santé numérique.</p>
-        </div>
-      </div>
-      <div class="stage">
-        <div class="stage-icon">💊</div>
-        <div>
-          <span class="stage-period">03/02/2025 → 07/03/2025</span>
-          <h3>Assurance Maladie</h3>
-          <p>Missions au sein du service informatique de l'Assurance Maladie. Participation aux opérations de support, de gestion d'infrastructure et de maintenance dans un environnement SI institutionnel de grande envergure.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<a class="card" href="veille.html">
+<h3>Veille</h3>
+<p>
+Suivi de l’actualité en cybersécurité et réseaux,
+avec utilisation de différentes sources et outils.
+</p>
+</a>
 
-  <!-- COMPÉTENCES -->
-  <section id="competences">
-    <div class="section-label">03 — Compétences du bloc 1</div>
-    <h2>Compétences couvertes</h2>
-    <p>Toutes les compétences du bloc 1 « Support et mise à disposition de services informatiques » sont couvertes par les réalisations présentées dans ce portfolio.</p>
-    <div class="comp-grid">
-      <div class="comp-item">
-        <strong>B1.1</strong>
-        <span>Gérer le patrimoine informatique</span>
-      </div>
-      <div class="comp-item">
-        <strong>B1.2</strong>
-        <span>Répondre aux incidents et demandes d'assistance</span>
-      </div>
-      <div class="comp-item">
-        <strong>B1.3</strong>
-        <span>Développer la présence en ligne de l'organisation</span>
-      </div>
-      <div class="comp-item">
-        <strong>B1.4</strong>
-        <span>Travailler en mode projet</span>
-      </div>
-      <div class="comp-item">
-        <strong>B1.5</strong>
-        <span>Mettre à disposition des utilisateurs un service informatique</span>
-      </div>
-      <div class="comp-item">
-        <strong>B1.6</strong>
-        <span>Organiser son développement professionnel</span>
-      </div>
-    </div>
-  </section>
+</div>
 
-  <!-- VEILLE -->
-  <section id="veille">
-    <div class="section-label">04 — Développement professionnel</div>
-    <h2>Veille technologique & identité professionnelle</h2>
-    <p>Je maintiens une veille active sur les évolutions des infrastructures réseaux, de la cybersécurité et du cloud computing, domaines au cœur du métier SISR.</p>
-    <div class="veille-cards">
-      <div class="veille-card">
-        <div class="vicon">🔐</div>
-        <h4>Cybersécurité</h4>
-        <p>Suivi des vulnérabilités, bonnes pratiques et nouvelles menaces réseau</p>
-      </div>
-      <div class="veille-card">
-        <div class="vicon">☁️</div>
-        <h4>Cloud & virtualisation</h4>
-        <p>Évolutions Azure, VM, conteneurs et services cloud</p>
-      </div>
-      <div class="veille-card">
-        <div class="vicon">🌐</div>
-        <h4>Réseaux & systèmes</h4>
-        <p>Protocoles, nouvelles architectures, SD-WAN et automatisation</p>
-      </div>
-    </div>
-    <div style="margin-top:1.2rem; display:flex; gap:.8rem; flex-wrap:wrap;">
-      <a href="https://www.linkedin.com/in/mehdi-trabelsi-555643280/" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-size:.88rem;font-weight:500;">in Profil LinkedIn</a>
-      <a href="https://github.com/USER75MA" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-size:.88rem;font-weight:500;">⌥ GitHub</a>
-      <a href="veille.html" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-size:.88rem;font-weight:500;">📡 Page veille →</a>
-    </div>
-  </section>
+<!-- E5 -->
+<h2>Épreuve E5</h2>
+
+<div class="grid">
+
+<a class="card" href="e5.html">
+<h3>Dossier E5</h3>
+<p>
+Présentation du dossier, tableau de synthèse,
+vidéo et organisation de l’épreuve.
+</p>
+</a>
+
+</div>
 
 </div>
 
 <footer>
-  <p>Mehdi Trabelsi · BTS SIO SISR · CNED · Session 2025–2026</p>
-  <p style="margin-top:.4rem;">
-    <a href="https://github.com/USER75MA" target="_blank">GitHub</a> ·
-    <a href="https://www.linkedin.com/in/mehdi-trabelsi-555643280/" target="_blank">LinkedIn</a> ·
-    <a href="e5.html">Épreuve E5</a>
-  </p>
+Portfolio BTS SIO SISR – Mehdi Trabelsi
 </footer>
 
 </body>

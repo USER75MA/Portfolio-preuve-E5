@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage 2 – Assurance Maladie | Portfolio BTS SIO SISR</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0f1b2d;
+      --blue:   #1a56db;
+      --blue-l: #e8f0fe;
+      --gray:   #6b7280;
+      --light:  #f8f9fb;
+      --white:  #ffffff;
+      --border: #e5e7eb;
+      --text:   #1c2333;
+      --radius: 10px;
+      --green:  #059669;
+      --green-l:#d1fae5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-brand {
+      font-family: 'DM Mono', monospace;
+      font-size: .85rem;
+      color: #7dd3fc;
+      letter-spacing: .06em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 400;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 6rem 2.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: .78rem;
+      color: #7dd3fc;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      background: rgba(125,211,252,.08);
+      border: 1px solid rgba(125,211,252,.2);
+      padding: .3rem .8rem;
+      border-radius: 4px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .hero h1 span { color: #7dd3fc; }
+    .hero p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .hero-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      font-size: .85rem; color: #64748b;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: .4rem; }
+    .hero-meta strong { color: #94a3b8; }
+
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+
+    section { margin-top: 4rem; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .6rem;
+    }
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+      padding-bottom: .7rem;
+      border-bottom: 2px solid var(--border);
+    }
+    p { color: #374151; margin-bottom: .8rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      width: 36px; height: 36px;
+      background: var(--blue-l);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: .9rem;
+      font-size: 1.1rem;
+    }
+    .card h3 {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .3rem;
+    }
+    .card p {
+      font-size: .85rem;
+      color: var(--gray);
+      margin-bottom: 0;
+      line-height: 1.55;
+    }
+
+    .missions {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      margin-top: 1rem;
+    }
+    .mission {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+    }
+    .mission-num {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem;
+      color: var(--blue);
+      background: var(--blue-l);
+      border-radius: 4px;
+      padding: .2rem .5rem;
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+    .mission h3 {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .mission p {
+      font-size: .83rem;
+      color: var(--gray);
+      margin-bottom: 0;
+    }
+
+    .links-list {
+      list-style: none;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .links-list li a {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .9rem 1.2rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: .92rem;
+      font-weight: 500;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .links-list li a:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,86,219,.08);
+      color: var(--blue);
+    }
+    .link-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--blue-l);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem;
+    }
+    .link-desc {
+      font-size: .78rem;
+      color: var(--gray);
+      font-weight: 400;
+      margin-top: .1rem;
+    }
+
+    .competences {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .comp {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: var(--radius);
+      padding: .75rem 1.2rem;
+      font-size: .88rem;
+    }
+    .comp-code {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem;
+      color: var(--blue);
+      font-weight: 500;
+      min-width: 40px;
+    }
+    .comp-label {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .comp-detail {
+      color: var(--gray);
+      font-size: .8rem;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .result-box {
+      background: linear-gradient(135deg, #f8fbff, #eef5ff);
+      border: 1px solid #dbe7ff;
+      border-radius: var(--radius);
+      padding: 1.4rem 1.5rem;
+      margin-top: 1rem;
+    }
+    .result-box h3 {
+      font-size: .95rem;
+      color: var(--navy);
+      margin-bottom: .5rem;
+    }
+    .result-box p:last-child { margin-bottom: 0; }
+
+    footer {
+      background: var(--navy);
+      color: #64748b;
+      text-align: center;
+      padding: 2rem;
+      font-size: .82rem;
+      margin-top: 5rem;
+    }
+    footer a { color: #7dd3fc; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .hero, .wrapper { padding-left: 1.2rem; padding-right: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">← PORTFOLIO / BTS SIO SISR</a>
+  <ul class="nav-links">
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#missions">Missions</a></li>
+    <li><a href="#productions">Productions</a></li>
+    <li><a href="#competences">Compétences</a></li>
+  </ul>
+</nav>
+
+<div style="background: var(--navy);">
+  <div class="hero" id="top">
+    <div class="hero-tag">Stage 2 – Assurance Maladie</div>
+    <h1>Préparation de postes, tests matériels<br>et <span>compatibilité de déploiement</span></h1>
+    <p>
+      Stage réalisé au sein du service informatique de l’Assurance Maladie. 
+      Les missions portaient sur la vérification de postes en réserve, la préparation au déploiement d’un environnement RHEL 7
+      et la réalisation de tests de compatibilité des périphériques utilisateurs en vue d’une future migration vers Windows 11.
+    </p>
+    <div class="hero-meta">
+      <span>📍 <strong>Lieu :</strong> Assurance Maladie</span>
+      <span>🗓️ <strong>Période :</strong> 03/02/2025 → 07/03/2025</span>
+      <span>🏢 <strong>Service :</strong> Informatique</span>
+      <span>🎓 <strong>Formation :</strong> BTS SIO SISR – CNED</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <section id="contexte">
+    <div class="section-label">01 — Contexte</div>
+    <h2>Présentation du stage</h2>
+    <p>
+      Ce stage s’est déroulé au sein du service informatique de l’Assurance Maladie, dans un environnement institutionnel
+      structuré où les opérations de préparation matérielle, de déploiement système et de validation de compatibilité
+      doivent être réalisées avec rigueur avant mise à disposition des utilisateurs.
+    </p>
+    <p>
+      Mes missions se sont articulées autour de deux besoins principaux : d’une part, contrôler des unités centrales
+      <strong>HP400</strong> présentes en réserve afin de vérifier si elles étaient aptes à recevoir un déploiement de
+      <strong>PLC RHEL 7</strong> ; d’autre part, réaliser un tableau de compatibilité des périphériques
+      utilisateurs dans le cadre d’une future migration de <strong>Windows 10 vers Windows 11</strong>.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Contrôle matériel</h3>
+        <p>Vérification de l’état et de la disponibilité de plusieurs unités centrales HP400 stockées en réserve.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💽</div>
+        <h3>Préparation au déploiement</h3>
+        <p>Installation et test d’un environnement PLC RHEL 7 destiné aux utilisateurs, avant mise en production.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <h3>Compatibilité périphériques</h3>
+        <p>Tests menés sur écrans, stations d’accueil et adaptateurs pour anticiper les problèmes liés à Windows 11.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Documentation</h3>
+        <p>Réalisation d’un tableau de compatibilité exploitable par l’équipe pour les décisions de déploiement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="missions">
+    <div class="section-label">02 — Missions réalisées</div>
+    <h2>Travail effectué</h2>
+    <div class="missions">
+      <div class="mission">
+        <span class="mission-num">M1</span>
+        <div>
+          <h3>Contrôle et préparation d’unités centrales HP400</h3>
+          <p>
+            J’ai vérifié l’état matériel des unités centrales HP400 disponibles dans la réserve afin d’identifier
+            celles qui étaient encore opérationnelles et capables de recevoir un déploiement de PLC RHEL 7.
+            Les postes non retenus étaient destinés à être envoyés dans des organismes de récupération de composants fonctionnels.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M2</span>
+        <div>
+          <h3>Installation et test de l’environnement PLC RHEL 7</h3>
+          <p>
+            J’ai participé à l’installation de l’environnement système destiné aux utilisateurs sur les postes retenus,
+            puis à la réalisation des tests de bon fonctionnement afin de vérifier que les machines étaient prêtes
+            pour une utilisation future dans de bonnes conditions.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M3</span>
+        <div>
+          <h3>Évaluation de la compatibilité en vue d’une migration Windows 11</h3>
+          <p>
+            En parallèle, j’ai réalisé des tests sur les périphériques utilisés par les agents — notamment écrans,
+            stations d’accueil et adaptateurs — afin d’identifier d’éventuelles incompatibilités dans le cadre
+            d’un futur remplacement de Windows 10 par Windows 11.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M4</span>
+        <div>
+          <h3>Création d’un tableau de compatibilité</h3>
+          <p>
+            J’ai conçu un fichier de suivi recensant les résultats des tests effectués, afin de signaler à l’équipe
+            les associations matériel / périphériques qui fonctionnaient correctement ou, au contraire, celles qui
+            pouvaient poser problème lors d’un futur déploiement.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M5</span>
+        <div>
+          <h3>Compte rendu à l’équipe</h3>
+          <p>
+            Les résultats de mes tests ont été transmis au groupe de testeurs afin d’alimenter leur vision globale
+            sur les matériels disponibles, les postes réutilisables et les incompatibilités périphériques à anticiper.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="productions">
+    <div class="section-label">03 — Productions</div>
+    <h2>Documents et livrables</h2>
+    <ul class="links-list">
+      <li>
+        <a href="Station-Ecran compatibilité.xlsx" target="_blank">
+          <span class="link-icon">📊</span>
+          <span>
+            <div>Tableau de compatibilité stations / écrans</div>
+            <div class="link-desc">Document recensant les résultats des tests de compatibilité liés à une future migration vers Windows 11.</div>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="Bilan de stage Assurance Maladie.pdf" target="_blank">
+          <span class="link-icon">📝</span>
+          <span>
+            <div>Bilan de stage</div>
+            <div class="link-desc">Synthèse des missions confiées, des outils utilisés et des compétences mobilisées.</div>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="Fiche d'évaluation.pdf" target="_blank">
+          <span class="link-icon">📄</span>
+          <span>
+            <div>Fiche d’évaluation du stage</div>
+            <div class="link-desc">Évaluation réalisée par le tuteur en entreprise sur les missions, l’autonomie et la communication.</div>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="attestation de stage.pdf" target="_blank">
+          <span class="link-icon">✅</span>
+          <span>
+            <div>Attestation de stage</div>
+            <div class="link-desc">Document officiel justifiant la réalisation du stage à l’Assurance Maladie.</div>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-label">04 — Résultats</div>
+    <h2>Résultats obtenus</h2>
+    <div class="result-box">
+      <h3>Des tests utiles pour le réemploi et l’anticipation du déploiement</h3>
+      <p>
+        Les vérifications réalisées sur les unités centrales HP400 ont permis d’identifier les matériels encore exploitables
+        pour un futur déploiement de PLC RHEL 7, tandis que les machines non retenues ont pu être orientées vers une filière
+        de récupération de composants.
+      </p>
+      <p>
+        Le tableau de compatibilité a également permis de signaler à l’équipe les cas de bon fonctionnement ou d’incompatibilité
+        entre certains périphériques et l’environnement visé pour Windows 11, afin d’anticiper les difficultés techniques
+        avant un déploiement à plus grande échelle.
+      </p>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="section-label">05 — Compétences</div>
+    <h2>Compétences mobilisées</h2>
+    <div class="competences">
+      <div class="comp">
+        <span class="comp-code">B1.1</span>
+        <span class="comp-label">Gérer le patrimoine informatique</span>
+        <span class="comp-detail">Contrôle de postes de réserve, identification du matériel réutilisable</span>
+      </div>
+      <div class="comp">
+        <span class="comp-code">B1.2</span>
+        <span class="comp-label">Répondre aux incidents et aux demandes d’assistance</span>
+        <span class="comp-detail">Tests matériels et détection de problèmes de compatibilité</span>
+      </div>
+      <div class="comp">
+        <span class="comp-code">B1.5</span>
+        <span class="comp-label">Mettre à disposition des utilisateurs un service informatique</span>
+        <span class="comp-detail">Préparation de postes et validation technique avant déploiement</span>
+      </div>
+      <div class="comp">
+        <span class="comp-code">B1.6</span>
+        <span class="comp-label">Organiser son développement professionnel</span>
+        <span class="comp-detail">Montée en compétence sur les tests matériels, le déploiement système et la validation de compatibilité</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">06 — Bilan</div>
+    <h2>Bilan professionnel</h2>
+    <p>
+      Ce stage m’a permis de travailler sur des tâches concrètes de préparation matérielle et de validation technique,
+      dans un contexte où la fiabilité des postes et la compatibilité des périphériques sont essentielles avant tout déploiement.
+      J’ai pu renforcer ma rigueur dans les tests, la vérification des équipements et la remontée d’informations utiles à l’équipe.
+    </p>
+    <p>
+      Cette expérience complète bien mon dossier E5, car elle montre une autre facette du support informatique :
+      la préparation des postes, la validation avant mise en service et l’anticipation des problèmes de compatibilité,
+      dans un environnement professionnel structuré.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <p>BTS SIO SISR 2e année – CNED · Stage 2 – Assurance Maladie · Février à mars 2025</p>
+  <p style="margin-top:.4rem;">
+    <a href="index.html">Retour au portfolio</a> ·
+    <a href="e5.html">Épreuve E5</a>
+  </p>
+</footer>
+
+</body>
+</html>

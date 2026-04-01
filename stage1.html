@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage 1 – SESAN | Portfolio BTS SIO SISR</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0f1b2d;
+      --blue:   #1a56db;
+      --blue-l: #e8f0fe;
+      --gray:   #6b7280;
+      --light:  #f8f9fb;
+      --white:  #ffffff;
+      --border: #e5e7eb;
+      --text:   #1c2333;
+      --radius: 10px;
+      --green:  #059669;
+      --green-l:#d1fae5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-brand {
+      font-family: 'DM Mono', monospace;
+      font-size: .85rem;
+      color: #7dd3fc;
+      letter-spacing: .06em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 400;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 6rem 2.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: .78rem;
+      color: #7dd3fc;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      background: rgba(125,211,252,.08);
+      border: 1px solid rgba(125,211,252,.2);
+      padding: .3rem .8rem;
+      border-radius: 4px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .hero h1 span { color: #7dd3fc; }
+    .hero p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .hero-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      font-size: .85rem; color: #64748b;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: .4rem; }
+    .hero-meta strong { color: #94a3b8; }
+
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+
+    section { margin-top: 4rem; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .6rem;
+    }
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+      padding-bottom: .7rem;
+      border-bottom: 2px solid var(--border);
+    }
+    p { color: #374151; margin-bottom: .8rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      width: 36px; height: 36px;
+      background: var(--blue-l);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: .9rem;
+      font-size: 1.1rem;
+    }
+    .card h3 {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .3rem;
+    }
+    .card p {
+      font-size: .85rem;
+      color: var(--gray);
+      margin-bottom: 0;
+      line-height: 1.55;
+    }
+
+    .missions {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      margin-top: 1rem;
+    }
+    .mission {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+    }
+    .mission-num {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem;
+      color: var(--blue);
+      background: var(--blue-l);
+      border-radius: 4px;
+      padding: .2rem .5rem;
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+    .mission h3 {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .mission p {
+      font-size: .83rem;
+      color: var(--gray);
+      margin-bottom: 0;
+    }
+
+    .links-list {
+      list-style: none;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .links-list li a {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .9rem 1.2rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: .92rem;
+      font-weight: 500;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .links-list li a:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,86,219,.08);
+      color: var(--blue);
+    }
+    .link-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--blue-l);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem;
+    }
+    .link-desc {
+      font-size: .78rem;
+      color: var(--gray);
+      font-weight: 400;
+      margin-top: .1rem;
+    }
+
+    .competences {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .comp {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: var(--radius);
+      padding: .75rem 1.2rem;
+      font-size: .88rem;
+    }
+    .comp-code {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem;
+      color: var(--blue);
+      font-weight: 500;
+      min-width: 40px;
+    }
+    .comp-label {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .comp-detail {
+      color: var(--gray);
+      font-size: .8rem;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .result-box {
+      background: linear-gradient(135deg, #f8fbff, #eef5ff);
+      border: 1px solid #dbe7ff;
+      border-radius: var(--radius);
+      padding: 1.4rem 1.5rem;
+      margin-top: 1rem;
+    }
+    .result-box h3 {
+      font-size: .95rem;
+      color: var(--navy);
+      margin-bottom: .5rem;
+    }
+    .result-box p:last-child { margin-bottom: 0; }
+
+    footer {
+      background: var(--navy);
+      color: #64748b;
+      text-align: center;
+      padding: 2rem;
+      font-size: .82rem;
+      margin-top: 5rem;
+    }
+    footer a { color: #7dd3fc; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .hero, .wrapper { padding-left: 1.2rem; padding-right: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">← PORTFOLIO / BTS SIO SISR</a>
+  <ul class="nav-links">
+    <li><a href="#contexte">Contexte</a></li>
+    <li><a href="#missions">Missions</a></li>
+    <li><a href="#productions">Productions</a></li>
+    <li><a href="#competences">Compétences</a></li>
+  </ul>
+</nav>
+
+<div style="background: var(--navy);">
+  <div class="hero" id="top">
+    <div class="hero-tag">Stage 1 – GIP SESAN</div>
+    <h1>Inventaire réseau, cartographie<br>et <span>réorganisation du câblage</span></h1>
+    <p>
+      Stage réalisé au sein du GIP SESAN, dans le pôle Infrastructure – programme ROSeS. 
+      L’objectif était de fiabiliser l’inventaire physique du réseau local, référencer les nourrices et les coffrets,
+      améliorer la lisibilité du câblage et préparer l’environnement à une évolution future vers NetBox.
+    </p>
+    <div class="hero-meta">
+      <span>📍 <strong>Lieu :</strong> Paris</span>
+      <span>🗓️ <strong>Période :</strong> 30/12/2024 → 31/01/2025</span>
+      <span>🏢 <strong>Structure :</strong> GIP SESAN</span>
+      <span>🎓 <strong>Formation :</strong> BTS SIO SISR – CNED</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <section id="contexte">
+    <div class="section-label">01 — Contexte</div>
+    <h2>Présentation du stage</h2>
+    <p>
+      Le stage s’est déroulé au sein du <strong>GIP SESAN</strong>, organisme spécialisé dans les systèmes d’information de santé.
+      J’ai été accueilli dans le <strong>pôle Infrastructure – programme ROSeS</strong>, avec pour mission principale de participer
+      à la fiabilisation de l’inventaire réseau et à la réorganisation du câblage dans les locaux. Cette mission répondait à un besoin
+      concret : disposer d’une vision claire des prises RJ45, des nourrices, des coffrets et des équipements connectés, afin de faciliter
+      l’exploitation et les futures évolutions de l’infrastructure.
+    </p>
+    <p>
+      Le projet s’appuyait sur une méthodologie en plusieurs phases : préparation des outils de collecte, cartographie des locaux,
+      organisation de l’audit sur site, puis préparation d’un futur transfert vers un nouvel outil d’IPAM avec NetBox. La présentation
+      méthodologique réalisée pendant le stage mettait en avant la création d’un fichier Excel d’inventaire, d’une cartographie des locaux
+      et d’une organisation par zones pour l’audit.  
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🗺️</div>
+        <h3>Cartographie des locaux</h3>
+        <p>Réalisation d’un plan visuel des bureaux avec l’emplacement des coffrets, nourrices, prises RJ45 et points Wi-Fi.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Inventaire structuré</h3>
+        <p>Création d’un fichier de suivi reliant coffret, port de switch, bloc nourrice, prise, équipement et position géographique.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <h3>Intervention physique</h3>
+        <p>Recâblage de coffrets, remplacement de câbles par des modèles Ubiquiti plus courts et mieux adaptés pour clarifier les branchements.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Préparation de NetBox</h3>
+        <p>Installation initiale de NetBox sur une machine Debian afin de préparer une future structuration de l’inventaire réseau.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="missions">
+    <div class="section-label">02 — Missions réalisées</div>
+    <h2>Travail effectué</h2>
+    <div class="missions">
+      <div class="mission">
+        <span class="mission-num">M1</span>
+        <div>
+          <h3>Conception de la cartographie des locaux</h3>
+          <p>
+            J’ai réalisé une cartographie des espaces de travail à l’aide de draw.io afin de représenter les pièces, les coffrets,
+            les nourrices, les prises RJ45 et certains éléments réseau. Cette production servait de support visuel à l’équipe pour
+            localiser rapidement les éléments de câblage et actualiser un plan plus ancien.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M2</span>
+        <div>
+          <h3>Création du fichier Excel d’inventaire</h3>
+          <p>
+            J’ai construit le fichier d’inventaire principal permettant de référencer les ports de switch, les blocs nourrices,
+            les prises, l’état de branchement, les équipements raccordés et leur position géographique dans les locaux.
+            Ce fichier servait à fiabiliser les données et à préparer une exploitation plus simple par l’équipe.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M3</span>
+        <div>
+          <h3>Vérification du câblage et recâblage de coffrets</h3>
+          <p>
+            J’ai participé à la vérification de l’état du câblage et j’ai recâblé moi-même deux coffrets.
+            L’objectif était d’améliorer la lisibilité, de corriger certaines incohérences de branchement
+            et de remplacer des câbles par des câbles Ubiquiti plus courts et plus adaptés.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M4</span>
+        <div>
+          <h3>Installation de NetBox sur Debian</h3>
+          <p>
+            J’ai installé NetBox sur une machine Debian pour préparer une future structuration plus avancée
+            de l’inventaire réseau. Il ne s’agissait pas encore d’une migration complète, mais d’une première
+            mise en place technique dans une logique de préparation.
+          </p>
+        </div>
+      </div>
+
+      <div class="mission">
+        <span class="mission-num">M5</span>
+        <div>
+          <h3>Présentation de la méthodologie à l’équipe</h3>
+          <p>
+            J’ai préparé et présenté un diaporama expliquant la méthodologie retenue, les outils créés,
+            l’organisation de l’audit par zones et la logique de progression du projet. Tous les documents produits
+            ont été présentés à mon tuteur en amont afin de les améliorer avant restitution en réunion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="productions">
+    <div class="section-label">03 — Productions</div>
+    <h2>Documents et livrables</h2>
+    <ul class="links-list">
+      <li>
+        <a href="cartographie.drawio.png" target="_blank">
+          <span class="link-icon">🗺️</span>
+          <span>
+            <div>Cartographie des locaux SESAN</div>
+            <div class="link-desc">Plan des locaux avec représentation des pièces, coffrets, nourrices, prises RJ45 et points Wi-Fi.</div>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="Etat des Nourrices SESAN_28_01_2025.xlsx" target="_blank">
+          <span class="link-icon">📊</span>
+          <span>
+            <div>Fichier Excel d’inventaire des nourrices</div>
+            <div class="link-desc">Référencement des ports, prises, branchements, équipements et positions dans les locaux.</div>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="PPT inventaire nourrice SESAN.pptx" target="_blank">
+          <span class="link-icon">📽️</span>
+          <span>
+            <div>Présentation méthodologique du projet</div>
+            <div class="link-desc">Diaporama utilisé pour présenter la méthodologie, les phases du projet et l’organisation de l’audit.</div>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="Attestation de stage SESAN Mehdi Trabelsi.pdf" target="_blank">
+          <span class="link-icon">📄</span>
+          <span>
+            <div>Attestation de stage</div>
+            <div class="link-desc">Document officiel justifiant la réalisation du stage au GIP SESAN.</div>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-label">04 — Résultats</div>
+    <h2>Résultats obtenus</h2>
+    <div class="result-box">
+      <h3>Une infrastructure physique mieux référencée et plus lisible</h3>
+      <p>
+        À l’issue du stage, l’inventaire réseau a été fiabilisé. Les équipements et nourrices ont été mieux référencés
+        par rapport aux switchs et aux coffrets, ce qui a permis d’obtenir une vision plus claire du câblage physique.
+      </p>
+      <p>
+        Des périphériques non utilisés ont également pu être réattribués, certains branchements ont été corrigés
+        et l’organisation des coffrets a été améliorée grâce au remplacement de câbles par des longueurs plus adaptées.
+        Le résultat final était fonctionnel, plus lisible et plus simple à exploiter par l’équipe.
+      </p>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="section-label">05 — Compétences</div>
+    <h2>Compétences mobilisées</h2>
+    <div class="competences">
+      <div class="comp">
+        <span class="comp-code">B1.1</span>
+        <span class="comp-label">Gérer le patrimoine informatique</span>
+        <span class="comp-detail">Inventaire physique du réseau, référencement des équipements et câblage</span>
+      </div>
+      <div class="comp">
+        <span class="comp-code">B1.4</span>
+        <span class="comp-label">Travailler en mode projet</span>
+        <span class="comp-detail">Méthodologie d’audit, planification par zones, présentation à l’équipe</span>
+      </div>
+      <div class="comp">
+        <span class="comp-code">B1.5</span>
+        <span class="comp-label">Mettre à disposition des utilisateurs un service informatique</span>
+        <span class="comp-detail">Préparation d’un environnement plus fiable et exploitable pour l’infrastructure réseau</span>
+      </div>
+      <div class="comp">
+        <span class="comp-code">B1.6</span>
+        <span class="comp-label">Organiser son développement professionnel</span>
+        <span class="comp-detail">Montée en compétence sur le câblage, l’inventaire réseau, Debian et NetBox</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">06 — Bilan</div>
+    <h2>Bilan professionnel</h2>
+    <p>
+      Ce stage m’a permis de travailler sur des problématiques concrètes d’infrastructure physique et de documentation réseau
+      dans un environnement professionnel réel. J’y ai renforcé mes compétences en inventaire, organisation de câblage,
+      lecture d’environnement technique et restitution à une équipe.
+    </p>
+    <p>
+      Il m’a aussi permis d’améliorer mon autonomie dans l’analyse des situations rencontrées, ce qui a été souligné
+      positivement dans l’évaluation de stage. Cette expérience constitue une réalisation professionnelle solide pour l’épreuve E5,
+      car elle montre à la fois une contribution personnelle identifiable, des productions concrètes et un résultat utile à l’organisation.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <p>BTS SIO SISR 2e année – CNED · Stage 1 – GIP SESAN · Décembre 2024 à janvier 2025</p>
+  <p style="margin-top:.4rem;">
+    <a href="index.html">Retour au portfolio</a> ·
+    <a href="e5.html">Épreuve E5</a>
+  </p>
+</footer>
+
+</body>
+</html>

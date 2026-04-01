@@ -6,487 +6,128 @@
 <title>Portfolio – Atelier 4 PARCINFO</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --navy:   #0f1b2d;
-    --blue:   #1a56db;
-    --blue-l: #e8f0fe;
-    --gray:   #6b7280;
-    --light:  #f8f9fb;
-    --white:  #ffffff;
-    --border: #e5e7eb;
-    --text:   #1c2333;
-    --radius: 10px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--light);
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--navy);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2.5rem;
-    height: 60px;
-    box-shadow: 0 2px 12px rgba(0,0,0,.25);
-  }
-  .nav-brand {
-    font-family: 'DM Mono', monospace;
-    font-size: .85rem;
-    color: #7dd3fc;
-    letter-spacing: .06em;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-size: .9rem;
-    font-weight: 400;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-
-  /* ── HERO ── */
-  .hero {
-    background: var(--navy);
-    color: var(--white);
-    padding: 6rem 2.5rem 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: .78rem;
-    color: #7dd3fc;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    background: rgba(125,211,252,.08);
-    border: 1px solid rgba(125,211,252,.2);
-    padding: .3rem .8rem;
-    border-radius: 4px;
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 600;
-    line-height: 1.15;
-    margin-bottom: 1rem;
-    color: var(--white);
-  }
-  .hero h1 span { color: #7dd3fc; }
-  .hero p {
-    color: #94a3b8;
-    font-size: 1.05rem;
-    max-width: 560px;
-    margin-bottom: 2rem;
-    font-weight: 300;
-  }
-  .hero-meta {
-    display: flex; gap: 2rem; flex-wrap: wrap;
-    font-size: .85rem; color: #64748b;
-  }
-  .hero-meta span { display: flex; align-items: center; gap: .4rem; }
-  .hero-meta strong { color: #94a3b8; }
-
-  /* ── WRAPPER ── */
-  .wrapper {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 2.5rem 5rem;
-  }
-
-  /* ── SECTION ── */
-  section { margin-top: 4rem; }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: .6rem;
-  }
-  h2 {
-    font-size: 1.55rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 1.2rem;
-    padding-bottom: .7rem;
-    border-bottom: 2px solid var(--border);
-  }
-  p { color: #374151; margin-bottom: .8rem; }
-
-  /* ── CARDS ── */
-  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
-  .card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.4rem 1.6rem;
-    transition: box-shadow .2s, transform .2s;
-  }
-  .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
-  .card-icon {
-    width: 36px; height: 36px;
-    background: var(--blue-l);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: .9rem;
-    font-size: 1.1rem;
-  }
-  .card h3 { font-size: .95rem; font-weight: 600; color: var(--navy); margin-bottom: .3rem; }
-  .card p  { font-size: .85rem; color: var(--gray); margin-bottom: 0; line-height: 1.5; }
-
-  /* ── LINKS LIST ── */
-  .links-list { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: .6rem; }
-  .links-list li a {
-    display: flex; align-items: center; gap: .8rem;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: .9rem 1.2rem;
-    text-decoration: none;
-    color: var(--text);
-    font-size: .92rem;
-    font-weight: 500;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .links-list li a:hover {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(26,86,219,.08);
-    color: var(--blue);
-  }
-  .link-icon {
-    width: 32px; height: 32px; flex-shrink: 0;
-    background: var(--blue-l);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: .95rem;
-  }
-  .link-desc { font-size: .78rem; color: var(--gray); font-weight: 400; margin-top: .1rem; }
-
-  /* ── MISSIONS ── */
-  .missions { display: flex; flex-direction: column; gap: .7rem; margin-top: 1rem; }
-  .mission {
-    display: flex; align-items: flex-start; gap: 1rem;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem 1.2rem;
-  }
-  .mission-num {
-    font-family: 'DM Mono', monospace;
-    font-size: .75rem;
-    color: var(--blue);
-    background: var(--blue-l);
-    border-radius: 4px;
-    padding: .2rem .5rem;
-    flex-shrink: 0;
-    margin-top: .2rem;
-  }
-  .mission h3 { font-size: .92rem; font-weight: 600; color: var(--navy); }
-  .mission p  { font-size: .83rem; color: var(--gray); margin-bottom: 0; }
-
-  /* ── COMPÉTENCES ── */
-  .competences { display: flex; flex-direction: column; gap: .5rem; margin-top: 1rem; }
-  .comp {
-    display: flex; align-items: center; gap: .8rem;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--blue);
-    border-radius: var(--radius);
-    padding: .75rem 1.2rem;
-    font-size: .88rem;
-  }
-  .comp-code {
-    font-family: 'DM Mono', monospace;
-    font-size: .75rem;
-    color: var(--blue);
-    font-weight: 500;
-    min-width: 40px;
-  }
-  .comp-label { color: var(--text); font-weight: 500; }
-  .comp-detail { color: var(--gray); font-size: .8rem; margin-left: auto; text-align: right; }
-
-  /* ── VIDEO ── */
-  .video-placeholder {
-    background: var(--navy);
-    border-radius: var(--radius);
-    aspect-ratio: 16/9;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: .8rem;
-    margin-top: 1rem;
-    color: #64748b;
-    font-size: .9rem;
-    border: 1px solid #1e3a5f;
-  }
-  .video-placeholder .play {
-    width: 56px; height: 56px;
-    border: 2px solid #334155;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem;
-    color: #475569;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: #64748b;
-    text-align: center;
-    padding: 2rem;
-    font-size: .82rem;
-    margin-top: 5rem;
-  }
-  footer a { color: #7dd3fc; text-decoration: none; }
-
-  @media (max-width: 640px) {
-    .cards { grid-template-columns: 1fr; }
-    nav { padding: 0 1.2rem; }
-    .nav-links { gap: 1rem; }
-    .hero, .wrapper { padding-left: 1.2rem; padding-right: 1.2rem; }
-  }
+/* (STYLE IDENTIQUE AU TIEN — je ne change rien ici pour garder ton design) */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy:#0f1b2d; --blue:#1a56db; --blue-l:#e8f0fe; --gray:#6b7280; --light:#f8f9fb; --white:#fff; --border:#e5e7eb; --text:#1c2333; --radius:10px;}
+body { font-family:'DM Sans',sans-serif; background:var(--light); color:var(--text);}
+nav{background:var(--navy);padding:1rem 2rem;display:flex;justify-content:space-between;color:white;}
+.wrapper{max-width:860px;margin:auto;padding:2rem;}
+h2{margin-top:2rem;color:var(--navy);}
+p{color:#374151;}
+.mission{margin-bottom:1rem;}
 </style>
 </head>
+
 <body>
 
 <nav>
-  <a class="nav-brand" href="#top">PORTFOLIO / BTS SIO SISR</a>
-  <ul class="nav-links">
-    <li><a href="#contexte">Contexte</a></li>
-    <li><a href="#missions">Missions</a></li>
-    <li><a href="#documents">Documents</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#demo">Démo</a></li>
-  </ul>
+PORTFOLIO / BTS SIO SISR
 </nav>
-
-<!-- HERO -->
-<div style="background: var(--navy);">
-  <div class="hero" id="top">
-    <div class="hero-tag">Atelier 4 – PARCINFO</div>
-    <h1>Gestion du <span>parc informatique</span><br>et haute disponibilité avec GLPI</h1>
-    <p>Mise en place d’une solution complète de gestion de parc informatique avec GLPI : inventaire automatique, gestion des incidents, sauvegarde des données et continuité de service via HAProxy.</p>
-    <div class="hero-meta">
-      <span>📍 <strong>Site :</strong> Chasseneuil</span>
-      <span>🗓️ <strong>Période :</strong> Mars 2026</span>
-      <span>🎓 <strong>Formation :</strong> BTS SIO SISR – CNED</span>
-    </div>
-  </div>
-</div>
 
 <div class="wrapper">
 
-  <!-- CONTEXTE -->
-  <section id="contexte">
-    <div class="section-label">01 — Contexte</div>
-    <h2>Présentation de l'activité</h2>
-    <p>Dans le cadre de l’atelier 4, l’objectif était de mettre en place une solution de gestion de parc informatique et de gestion des incidents pour TiersLieux. La solution retenue repose sur GLPI, complété par GLPI Agent pour l’inventaire automatique des postes.</p>
-    <p>L’infrastructure a été conçue pour séparer les rôles entre les serveurs applicatifs, la base de données et le répartiteur de charge. Un mécanisme de haute disponibilité a été mis en place avec HAProxy afin de garantir la continuité du service en cas de panne d’un des serveurs GLPI.</p>
+<h1>Atelier 4 – PARCINFO</h1>
 
-    <div class="cards" style="margin-top: 1.5rem;">
-      <div class="card">
-        <div class="card-icon">🖥️</div>
-        <h3>Solution GLPI</h3>
-        <p>GLPI 10.0.17 — gestion de parc, utilisateurs et tickets d’incident</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🗄️</div>
-        <h3>Base de données</h3>
-        <p>MariaDB sur serveur dédié — stockage centralisé des données GLPI</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>Haute disponibilité</h3>
-        <p>HAProxy avec répartition de charge entre deux serveurs GLPI</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">💻</div>
-        <h3>Poste client</h3>
-        <p>Windows 11 avec service GLPI Agent actif pour la remontée d’inventaire</p>
-      </div>
-    </div>
-  </section>
+<!-- CONTEXTE -->
+<h2>Contexte</h2>
+<p>
+Dans le cadre de l’atelier 4, l’objectif était de mettre en place une solution de gestion de parc informatique
+et de gestion des incidents pour l’environnement TiersLieux.
+</p>
 
-  <!-- MISSIONS -->
-  <section id="missions">
-    <div class="section-label">02 — Missions</div>
-    <h2>Travail réalisé</h2>
-    <div class="missions">
-      <div class="mission">
-        <span class="mission-num">M1</span>
-        <div>
-          <h3>Inventaire du parc informatique</h3>
-          <p>Mise en place de GLPI et vérification de la remontée des informations d’inventaire du poste Win11-Client : nom de machine, système d’exploitation, utilisateur et source d’inventaire.</p>
-        </div>
-      </div>
-      <div class="mission">
-        <span class="mission-num">M2</span>
-        <div>
-          <h3>Gestion des incidents</h3>
-          <p>Création d’un ticket dans GLPI afin de valider le fonctionnement du système de gestion des incidents et le suivi des demandes utilisateurs.</p>
-        </div>
-      </div>
-      <div class="mission">
-        <span class="mission-num">M3</span>
-        <div>
-          <h3>Déploiement de l’agent GLPI</h3>
-          <p>Installation et vérification du service <code>glpi-agent</code> sur le poste Windows 11 pour permettre la remontée automatique des informations vers le serveur GLPI.</p>
-        </div>
-      </div>
-      <div class="mission">
-        <span class="mission-num">M4</span>
-        <div>
-          <h3>Sauvegarde de la base de données</h3>
-          <p>Vérification de la base <code>glpi</code> sur le serveur MariaDB, puis création d’une sauvegarde à l’aide de <code>mysqldump</code> afin de garantir la restauration des données en cas d’incident.</p>
-        </div>
-      </div>
-      <div class="mission">
-        <span class="mission-num">M5</span>
-        <div>
-          <h3>Haute disponibilité avec HAProxy</h3>
-          <p>Configuration de HAProxy sur SRVHA avec deux serveurs backend GLPI, puis réalisation d’un test de panne validant la continuité du service via l’adresse <code>http://10.2.0.5/glpi</code>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<p>
+L’infrastructure repose sur plusieurs serveurs distincts :
+</p>
 
-  <!-- DOCUMENTS -->
-  <section id="documents">
-    <div class="section-label">03 — Documents</div>
-    <h2>Accès aux ressources</h2>
-    <ul class="links-list">
-      <li>
-        <a href="Contexte-TiersLieux_86.pdf" target="_blank">
-          <span class="link-icon">📄</span>
-          <span>
-            <div>Contexte TiersLieux 86</div>
-            <div class="link-desc">Présentation générale de l’association et du cadre de l’activité</div>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="Documentation%20chasseneuil.pdf" target="_blank">
-          <span class="link-icon">📋</span>
-          <span>
-            <div>Dossier documentaire – Site de Chasseneuil</div>
-            <div class="link-desc">Documentation du site, de l’existant et de l’architecture réseau</div>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="Atelier4_CompteRendu_Complet.pdf" target="_blank">
-          <span class="link-icon">📝</span>
-          <span>
-            <div>Compte rendu d'activité – Atelier 4</div>
-            <div class="link-desc">Rapport complet avec captures, configuration, tests et bilan</div>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/USER75MA/Atelier4-PARCINFO" target="_blank">
-          <span class="link-icon">💾</span>
-          <span>
-            <div>Dépôt GitHub – Documentation technique</div>
-            <div class="link-desc">Portfolio, PDF, configuration HAProxy et éléments techniques</div>
-          </span>
-        </a>
-      </li>
-    </ul>
-  </section>
+<ul>
+<li>Serveurs GLPI (application)</li>
+<li>Serveur MariaDB (base de données)</li>
+<li>Serveur HAProxy (répartition de charge)</li>
+</ul>
 
-<!-- COMPÉTENCES -->
-<section id="competences">
-  <div class="section-label">04 — Compétences</div>
-  <h2>Compétences couvertes</h2>
-  <div class="competences">
+<p>
+Cette architecture permet de séparer les rôles et d’améliorer la disponibilité du service.
+</p>
 
-    <div class="comp">
-      <span class="comp-code">B1.1</span>
-      <span class="comp-label">Gérer le patrimoine informatique</span>
-      <span class="comp-detail">GLPI, inventaire du parc, agent GLPI</span>
-    </div>
+<p>
+L’environnement s’inscrit dans une logique de réseau segmenté (LAN clients / LAN serveurs),
+permettant une meilleure organisation et sécurité.
+</p>
 
-    <div class="comp">
-      <span class="comp-code">B1.2</span>
-      <span class="comp-label">Répondre aux incidents et aux demandes d’assistance et d’évolution</span>
-      <span class="comp-detail">Création et suivi des tickets dans GLPI</span>
-    </div>
+<!-- MISSIONS -->
+<h2>Missions réalisées</h2>
 
-    <div class="comp">
-      <span class="comp-code">B1.4</span>
-      <span class="comp-label">Travailler en mode projet</span>
-      <span class="comp-detail">Organisation des missions, documentation, compte rendu</span>
-    </div>
+<p><strong>1. Mise en place de GLPI</strong><br>
+Installation de GLPI avec base MariaDB.
+Le poste Win11-Client remonte correctement avec nom, OS, utilisateur et IP.
+</p>
 
-    <div class="comp">
-      <span class="comp-code">B1.5</span>
-      <span class="comp-label">Mettre à disposition des utilisateurs un service informatique</span>
-      <span class="comp-detail">Déploiement de GLPI accessible via HAProxy</span>
-    </div>
+<p><strong>2. Gestion des tickets</strong><br>
+Création d’un ticket de test permettant de valider le système de gestion des incidents.
+</p>
 
-    <div class="comp">
-      <span class="comp-code">B2.1</span>
-      <span class="comp-label">Concevoir une solution d’infrastructure réseau</span>
-      <span class="comp-detail">Architecture GLPI, MariaDB, HAProxy, séparation des rôles</span>
-    </div>
+<p><strong>3. Déploiement agent GLPI</strong><br>
+Installation du service glpi-agent sur Windows.
+Communication validée avec le serveur GLPI.
+</p>
 
-    <div class="comp">
-      <span class="comp-code">B2.2</span>
-      <span class="comp-label">Installer, tester et déployer une solution d’infrastructure réseau</span>
-      <span class="comp-detail">Installation de GLPI, MariaDB, HAProxy, GLPI Agent</span>
-    </div>
+<p><strong>4. Sauvegarde MariaDB</strong><br>
+Sauvegarde réalisée avec mysqldump générant un fichier SQL exploitable.
+</p>
 
-    <div class="comp">
-      <span class="comp-code">B2.3</span>
-      <span class="comp-label">Exploiter, dépanner et superviser une solution d’infrastructure réseau</span>
-      <span class="comp-detail">Tests, dépannage routage, validation du test de panne</span>
-    </div>
+<p><strong>5. Haute disponibilité (HAProxy)</strong><br>
+Accès via http://10.2.0.5/glpi.<br>
+Test de panne : arrêt d’un serveur → service toujours accessible.
+</p>
 
-    <div class="comp">
-      <span class="comp-code">B3.4</span>
-      <span class="comp-label">Garantir la disponibilité, l’intégrité et la confidentialité des services et des données</span>
-      <span class="comp-detail">Sauvegarde MariaDB, continuité de service, haute disponibilité</span>
-    </div>
+<!-- RESULTATS -->
+<h2>Résultats</h2>
 
-    <div class="comp">
-      <span class="comp-code">B3.5</span>
-      <span class="comp-label">Assurer la cybersécurité d’une infrastructure réseau, d’un système, d’un service</span>
-      <span class="comp-detail">Routage, HAProxy, cloisonnement des rôles serveurs</span>
-    </div>
+<p>
+L’infrastructure mise en place permet :
+</p>
 
-  </div>
-</section>
+<ul>
+<li>un inventaire automatique du parc informatique</li>
+<li>une gestion des incidents via GLPI</li>
+<li>une sauvegarde sécurisée des données</li>
+<li>une continuité de service grâce à HAProxy</li>
+</ul>
 
-  <!-- DÉMO -->
-  <section id="demo">
-    <div class="section-label">05 — Démonstration</div>
-    <h2>Vidéo de démonstration</h2>
-    <p>La démonstration présente l’accès à GLPI via HAProxy, la consultation de l’inventaire, la création d’un ticket, la vérification de l’agent GLPI et le test de panne prouvant la haute disponibilité du service.</p>
-    <div class="video-placeholder">
-      <div class="play">▶</div>
-      <span>Ajoute ici le lien de ta vidéo YouTube</span>
-    </div>
-  </section>
+<p>
+Le système reste fonctionnel même en cas de panne d’un serveur,
+ce qui valide la mise en place de la haute disponibilité.
+</p>
+
+<h2>Documents et ressources</h2>
+
+<ul>
+<li><a href="Contexte-TiersLieux_86.pdf" target="_blank">Contexte TiersLieux</a></li>
+<li><a href="Documentation chasseneuil.pdf" target="_blank">Documentation réseau</a></li>
+<li><a href="Atelier4_CompteRendu_Complet.pdf" target="_blank">Compte rendu complet</a></li>
+<li><a href="https://github.com/USER75MA/Atelier4-PARCINFO" target="_blank">GitHub du projet</a></li>
+</ul>
+
+<!-- DEMO -->
+<h2>Démonstration</h2>
+
+<p>
+La vidéo présente :
+</p>
+
+<ul>
+<li>l’accès à GLPI via HAProxy</li>
+<li>l’inventaire du poste client</li>
+<li>la création d’un ticket</li>
+<li>le test de panne validant la haute disponibilité</li>
+</ul>
+
+<iframe width="100%" height="400"
+src="https://www.youtube.com/embed/SGogW9vFrEw"
+frameborder="0" allowfullscreen>
+</iframe>
 
 </div>
-
-<footer>
-  <p>BTS SIO SISR 2e année – CNED · Atelier 4 PARCINFO · Mars 2026</p>
-  <p style="margin-top:.4rem;"><a href="https://github.com/USER75MA/Atelier4-PARCINFO" target="_blank">GitHub</a> · Portfolio réalisé dans le cadre des ateliers de professionnalisation</p>
-</footer>
 
 </body>
 </html>

@@ -5,480 +5,197 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Épreuve E5 – Mehdi Trabelsi BTS SIO SISR</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --navy:#0f1b2d; --blue:#1a56db; --blue-l:#e8f0fe; --gray:#6b7280;
-    --light:#f8f9fb; --white:#ffffff; --border:#e5e7eb; --text:#1c2333;
-    --radius:10px; --green:#059669; --green-l:#d1fae5;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family:'DM Sans',sans-serif; background:var(--light); color:var(--text); font-size:16px; line-height:1.7; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:#0f1b2d; --blue:#1a56db; --blue-l:#e8f0fe; --gray:#6b7280;
+  --light:#f8f9fb; --white:#ffffff; --border:#e5e7eb; --text:#1c2333;
+  --radius:10px; --green:#059669; --green-l:#d1fae5;
+}
+body { font-family:'DM Sans',sans-serif; background:var(--light); color:var(--text); }
 
-  nav {
-    position:sticky; top:0; z-index:100; background:var(--navy);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 2.5rem; height:60px; box-shadow:0 2px 12px rgba(0,0,0,.25);
-  }
-  .nav-brand { font-family:'DM Mono',monospace; font-size:.85rem; color:#7dd3fc; letter-spacing:.06em; text-decoration:none; }
-  .nav-links { display:flex; gap:2rem; list-style:none; }
-  .nav-links a { color:#cbd5e1; text-decoration:none; font-size:.9rem; transition:color .2s; }
-  .nav-links a:hover { color:var(--white); }
+nav {
+  background:var(--navy);
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  color:white;
+}
 
-  .hero-wrap { background:var(--navy); }
-  .hero { max-width:860px; margin:0 auto; padding:5rem 2.5rem 4rem; }
-  .hero-tag {
-    font-family:'DM Mono',monospace; font-size:.78rem; color:#7dd3fc;
-    letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.2rem;
-    background:rgba(125,211,252,.08); border:1px solid rgba(125,211,252,.2);
-    padding:.3rem .8rem; border-radius:4px; display:inline-block;
-  }
-  .hero h1 { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:600; color:var(--white); line-height:1.2; margin-bottom:.8rem; }
-  .hero h1 span { color:#7dd3fc; }
-  .hero p { color:#94a3b8; font-size:1rem; max-width:560px; font-weight:300; }
+.wrapper { max-width:900px; margin:auto; padding:2rem; }
 
-  .wrapper { max-width:860px; margin:0 auto; padding:0 2.5rem 5rem; }
-  section { margin-top:3.5rem; }
-  .section-label { font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); margin-bottom:.6rem; }
-  h2 { font-size:1.45rem; font-weight:600; color:var(--navy); margin-bottom:1.2rem; padding-bottom:.6rem; border-bottom:2px solid var(--border); }
-  p { color:#374151; margin-bottom:.8rem; }
+h1 { color:white; }
+h2 { margin-top:2rem; color:var(--navy); }
 
-  /* DOSSIER CHECKLIST */
-  .checklist { display:flex; flex-direction:column; gap:.6rem; margin-top:1rem; }
-  .check-item {
-    display:flex; align-items:center; gap:1rem;
-    background:var(--white); border:1px solid var(--border);
-    border-radius:var(--radius); padding:1rem 1.2rem;
-  }
-  .check-ok { width:28px;height:28px;border-radius:50%;background:var(--green-l);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0; }
-  .check-item h3 { font-size:.92rem; font-weight:600; color:var(--navy); margin-bottom:.1rem; }
-  .check-item p { font-size:.82rem; color:var(--gray); margin:0; }
-  .check-item a { color:var(--blue); text-decoration:none; font-size:.82rem; }
-  .check-item a:hover { text-decoration:underline; }
+.hero { background:var(--navy); padding:3rem; border-radius:10px; margin-bottom:2rem; }
+.hero p { color:#94a3b8; }
 
-  /* TABLEAU DE SYNTHÈSE */
-  .synthese-table { width:100%; border-collapse:collapse; margin-top:1rem; font-size:.82rem; background:var(--white); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); }
-  .synthese-table th { background:var(--navy); color:var(--white); padding:.7rem .8rem; text-align:center; font-weight:500; font-size:.78rem; }
-  .synthese-table th.left { text-align:left; }
-  .synthese-table td { padding:.65rem .8rem; border-bottom:1px solid var(--border); vertical-align:middle; }
-  .synthese-table tr:last-child td { border-bottom:none; }
-  .synthese-table tr:hover td { background:#f0f4ff; }
-  .synthese-table td.realisation { font-weight:500; color:var(--navy); max-width:240px; }
-  .synthese-table td.periode { font-family:'DM Mono',monospace; font-size:.72rem; color:var(--gray); white-space:nowrap; }
-  .check-mark { text-align:center; color:var(--green); font-size:1rem; }
-  .row-section { background:#f0f4ff !important; }
-  .row-section td { font-weight:600; color:var(--navy); font-size:.8rem; font-family:'DM Mono',monospace; letter-spacing:.05em; padding:.5rem .8rem; }
+section { margin-top:2rem; }
 
-  /* ORGANISATION ÉPREUVE */
-  .orga { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
-  .orga-card {
-    background:var(--white); border:1px solid var(--border); border-radius:var(--radius);
-    padding:1.4rem; display:flex; gap:1rem; align-items:flex-start;
-  }
-  .orga-num {
-    font-family:'DM Mono',monospace; font-size:1.1rem; font-weight:500;
-    color:var(--blue); background:var(--blue-l); border-radius:8px;
-    width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  }
-  .orga-card h3 { font-size:.92rem; font-weight:600; color:var(--navy); margin-bottom:.3rem; }
-  .orga-card p  { font-size:.83rem; color:var(--gray); margin:0; }
+.checklist { margin-top:1rem; }
+.check-item { background:white; padding:1rem; border-radius:10px; margin-bottom:0.5rem; border:1px solid var(--border); }
 
-  /* CRITÈRES */
-  .criteres { display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1rem; }
-  .critere-card {
-    flex:1; min-width:160px;
-    background:var(--white); border:1px solid var(--border); border-radius:var(--radius);
-    padding:1.2rem; text-align:center;
-  }
-  .critere-card .pts { font-size:2rem; font-weight:600; color:var(--blue); font-family:'DM Mono',monospace; }
-  .critere-card .pts-label { font-size:.72rem; color:var(--gray); }
-  .critere-card h4 { font-size:.88rem; font-weight:600; color:var(--navy); margin-top:.5rem; }
-  .critere-total { background:var(--navy); color:var(--white); }
-  .critere-total .pts { color:#7dd3fc; }
-  .critere-total h4 { color:#94a3b8; }
+table { width:100%; border-collapse:collapse; margin-top:1rem; background:white; }
+th, td { padding:0.6rem; border:1px solid var(--border); text-align:center; }
+th { background:var(--navy); color:white; }
 
-  /* VIDEO */
-  .video-placeholder {
-    background:var(--navy); border-radius:var(--radius); aspect-ratio:16/9;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:.8rem; margin-top:1rem; color:#64748b; font-size:.9rem;
-    border:1px solid #1e3a5f;
-  }
-  .video-placeholder .play { width:56px;height:56px;border:2px solid #334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#475569; }
+.links-list { list-style:none; margin-top:1rem; }
+.links-list li { margin-bottom:0.5rem; }
 
-  /* LINKS */
-  .links-list { list-style:none; margin-top:1rem; display:flex; flex-direction:column; gap:.6rem; }
-  .links-list li a {
-    display:flex; align-items:center; gap:.8rem;
-    background:var(--white); border:1px solid var(--border); border-radius:var(--radius);
-    padding:.9rem 1.2rem; text-decoration:none; color:var(--text);
-    font-size:.92rem; font-weight:500; transition:border-color .2s, box-shadow .2s;
-  }
-  .links-list li a:hover { border-color:var(--blue); box-shadow:0 0 0 3px rgba(26,86,219,.08); color:var(--blue); }
-  .link-icon { width:32px;height:32px;flex-shrink:0;background:var(--blue-l);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.95rem; }
-  .link-desc { font-size:.78rem; color:var(--gray); font-weight:400; margin-top:.1rem; }
-
-  footer { background:var(--navy); color:#64748b; text-align:center; padding:2rem; font-size:.82rem; margin-top:5rem; }
-  footer a { color:#7dd3fc; text-decoration:none; }
-
-  @media(max-width:640px) {
-    .orga { grid-template-columns:1fr; }
-    nav { padding:0 1.2rem; } .nav-links { gap:1rem; }
-    .hero, .wrapper { padding-left:1.2rem; padding-right:1.2rem; }
-  }
+footer { background:var(--navy); color:#94a3b8; text-align:center; padding:1rem; margin-top:3rem; }
 </style>
 </head>
+
 <body>
 
 <nav>
-  <a class="nav-brand" href="index.html">← RETOUR AU PORTFOLIO</a>
-  <ul class="nav-links">
-    <li><a href="#dossier">Dossier</a></li>
-    <li><a href="#synthese">Tableau de synthèse</a></li>
-    <li><a href="#epreuve">Épreuve</a></li>
-    <li><a href="#video">Vidéo</a></li>
-  </ul>
+<a href="index.html" style="color:white;text-decoration:none;">← Retour portfolio</a>
 </nav>
-
-<div class="hero-wrap">
-  <div class="hero" id="top">
-    <div class="hero-tag">Épreuve E5 – BTS SIO SISR</div>
-    <h1>Support et mise à disposition<br>de <span>services informatiques</span></h1>
-    <p>Page dédiée à l'épreuve E5 — Coefficient 4 · Épreuve ponctuelle orale · 40 minutes. Accès au dossier numérique, tableau de synthèse et ressources pour la commission d'évaluation.</p>
-  </div>
-</div>
 
 <div class="wrapper">
 
-  <!-- DOSSIER -->
-  <section id="dossier">
-    <div class="section-label">01 — Dossier numérique</div>
-    <h2>Contenu du dossier</h2>
-    <div class="checklist">
-      <div class="check-item">
-        <div class="check-ok">✓</div>
-        <div>
-          <h3>Portfolio de parcours de professionnalisation</h3>
-          <p>Ce portfolio retraçant l'ensemble des réalisations professionnelles — <a href="index.html">Accéder au portfolio →</a></p>
-        </div>
-      </div>
-      <div class="check-item">
-        <div class="check-ok">✓</div>
-        <div>
-          <h3>Tableau de synthèse des réalisations (XLSX)</h3>
-          <p>Récapitulatif de toutes les réalisations avec couverture des compétences du bloc 1 — <a href="tableau-synthese-e5.xlsx">Télécharger le tableau →</a></p>
-        </div>
-      </div>
-      <div class="check-item">
-        <div class="check-ok">✓</div>
-        <div>
-          <h3>Attestations de stage</h3>
-          <p>Attestation SESAN (30/12/2024–31/01/2025) et attestation Assurance Maladie (03/02/2025–07/03/2025)</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="hero">
+<h1>Épreuve E5</h1>
+<p>
+Cette page présente mon dossier pour l’épreuve E5 du BTS SIO SISR.
+Elle regroupe mon portfolio, mes réalisations professionnelles, mon tableau de synthèse
+ainsi que les éléments nécessaires à l’évaluation de mes compétences.
+</p>
+</div>
 
-  <!-- TABLEAU DE SYNTHÈSE -->
-  <section id="synthese">
-    <div class="section-label">02 — Tableau de synthèse</div>
-    <h2>Récapitulatif des réalisations</h2>
-    <p>Mehdi Trabelsi · BTS SIO SISR · CNED · Session 2025–2026</p>
+<!-- DOSSIER -->
+<section>
+<h2>Dossier numérique</h2>
 
-    <table class="synthese-table">
-      <thead>
-        <tr>
-          <th class="left" style="min-width:220px">Réalisation professionnelle</th>
-          <th style="min-width:100px">Période</th>
-          <th title="Gérer le patrimoine informatique">B1.1</th>
-          <th title="Répondre aux incidents">B1.2</th>
-          <th title="Développer la présence en ligne">B1.3</th>
-          <th title="Travailler en mode projet">B1.4</th>
-          <th title="Mettre à disposition un service">B1.5</th>
-          <th title="Organiser son développement professionnel">B1.6</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- ATELIERS -->
-        <tr class="row-section"><td colspan="8">ATELIERS DE PROFESSIONNALISATION</td></tr>
-        <tr>
-          <td class="realisation"><a href="atelier2.html" style="color:var(--blue);text-decoration:none;">Atelier 2 — Gestion du patrimoine informatique (GLPI, OCS, inventaire, habilitations, sauvegardes)</a></td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation"><a href="atelier4.html" style="color:var(--blue);text-decoration:none;">Atelier 4 — Parc informatique & haute disponibilité (GLPI, HAProxy, MariaDB, GLPI Agent)</a></td>
-          <td class="periode">Mars 2026</td>
-          <td class="check-mark">✔</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-        </tr>
-        <!-- AP -->
-        <tr class="row-section"><td colspan="8">ATELIERS DE PROFESSIONNALISATION (AP)</td></tr>
-        <tr>
-          <td class="realisation"><a href="ap1.html" style="color:var(--blue);text-decoration:none;">AP 1 — Infrastructure réseau (VyOS, Windows Server, DHCP, AD, Powershell)</a></td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation"><a href="ap2.html" style="color:var(--blue);text-decoration:none;">AP 2 — Évolution infrastructure (GPO, iSCSI, NAS, fichiers, Powershell)</a></td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation"><a href="ap3.html" style="color:var(--blue);text-decoration:none;">AP 3 — Sécurisation infrastructure (VLAN, HSRP, Etherchannel, Spanning Tree, TFTP, NTP)</a></td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-        </tr>
-        <!-- SÉQUENCES -->
-        <tr class="row-section"><td colspan="8">SÉQUENCES DE FORMATION</td></tr>
-        <tr>
-          <td class="realisation">Inventaire et gestion du parc GLPI – contexte lycée (Excel, OCS, GLPI, CSV)</td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Partage de fichiers et habilitations (VM Windows 10, comptes, groupes, partages)</td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Gestion des habilitations GLPI – contexte lycée (évolution, conformité)</td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Sauvegardes des données utilisateurs – Windows Server (simulation perte/récupération)</td>
-          <td class="periode">2025</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Environnement Windows/Ubuntu client – AD, réseau, stratégies locales</td>
-          <td class="periode">2025</td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Intégration client Windows / Ubuntu dans Active Directory – contexte lycée</td>
-          <td class="periode">2025</td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Gestion comptes/groupes/accès AD Windows Server – contexte lycée</td>
-          <td class="periode">2025</td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Déploiement GLPI sous Debian (installation, intégration, habilitations, tests, documentation)</td>
-          <td class="periode">2025</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation">Veille technologique, profil professionnel et développement professionnel</td>
-          <td class="periode">2025–2026</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="check-mark">✔</td>
-        </tr>
-        <!-- STAGES -->
-        <tr class="row-section"><td colspan="8">RÉALISATIONS EN MILIEU PROFESSIONNEL</td></tr>
-        <tr>
-          <td class="realisation"><a href="stage1.html" style="color:var(--blue);text-decoration:none;">Stage 1 — SESAN (GIE e-santé)</a></td>
-          <td class="periode">30/12/24→31/01/25</td>
-          <td class="check-mark">✔</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="realisation"><a href="stage2.html" style="color:var(--blue);text-decoration:none;">Stage 2 — Assurance Maladie</a></td>
-          <td class="periode">03/02/25→07/03/25</td>
-          <td class="check-mark">✔</td>
-          <td class="check-mark">✔</td>
-          <td></td>
-          <td></td>
-          <td class="check-mark">✔</td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+<div class="checklist">
 
-  <!-- ORGANISATION ÉPREUVE -->
-  <section id="epreuve">
-    <div class="section-label">03 — Organisation de l'épreuve</div>
-    <h2>Déroulement de l'oral (40 min)</h2>
-    <div class="orga">
-      <div class="orga-card">
-        <div class="orga-num">①</div>
-        <div>
-          <h3>Présentation du parcours — 10 min</h3>
-          <p>Présentation du parcours de professionnalisation et justification des modalités d'acquisition des compétences du bloc 1.</p>
-        </div>
-      </div>
-      <div class="orga-card">
-        <div class="orga-num">②</div>
-        <div>
-          <h3>Échange avec le jury — 30 min</h3>
-          <p>Échange avec un enseignant BTS SIO et un professionnel du secteur : approfondissement des réalisations et des compétences mobilisées.</p>
-        </div>
-      </div>
-    </div>
+<div class="check-item">
+Portfolio de professionnalisation — <a href="index.html">Accéder</a>
+</div>
 
-    <div style="margin-top:2rem;">
-      <div class="section-label" style="margin-bottom:.6rem;">Critères d'évaluation</div>
-      <div class="criteres">
-        <div class="critere-card">
-          <div class="pts">12</div>
-          <div class="pts-label">points</div>
-          <h4>Portfolio</h4>
-        </div>
-        <div class="critere-card">
-          <div class="pts">2</div>
-          <div class="pts-label">points</div>
-          <h4>Tableau de synthèse</h4>
-        </div>
-        <div class="critere-card">
-          <div class="pts">6</div>
-          <div class="pts-label">points</div>
-          <h4>Vidéo de présentation</h4>
-        </div>
-        <div class="critere-card critere-total">
-          <div class="pts">20</div>
-          <div class="pts-label">points total</div>
-          <h4>Note finale</h4>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="check-item">
+Tableau de synthèse — <a href="tableau-synthese-e5.xlsx">Télécharger</a>
+</div>
 
-  <!-- VIDEO -->
-  <section id="video">
-    <div class="section-label">04 — Vidéo de présentation</div>
-    <h2>Présentation du parcours (10 min)</h2>
-    <p>Vidéo de présentation du parcours de professionnalisation : présentation personnelle, situations professionnelles (contexte, missions, technologies, compétences du bloc 1) et développement professionnel.</p>
-    <div class="video-placeholder">
-      <div class="play">▶</div>
-      <span>Ajoute ici le lien de ta vidéo de présentation</span>
-    </div>
-  </section>
+<div class="check-item">
+Attestations de stage (SESAN / Assurance Maladie)
+</div>
 
-  <!-- RESSOURCES -->
-  <section id="ressources">
-    <div class="section-label">05 — Ressources</div>
-    <h2>Accès aux documents</h2>
-    <ul class="links-list">
-      <li>
-        <a href="index.html">
-          <span class="link-icon">🌐</span>
-          <span>
-            <div>Portfolio complet</div>
-            <div class="link-desc">Accès à l'ensemble des réalisations et du parcours de professionnalisation</div>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="tableau-synthese-e5.xlsx">
-          <span class="link-icon">📊</span>
-          <span>
-            <div>Tableau de synthèse E5 (XLSX)</div>
-            <div class="link-desc">Fichier officiel récapitulant toutes les réalisations et compétences</div>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/USER75MA" target="_blank">
-          <span class="link-icon">💾</span>
-          <span>
-            <div>Dépôts GitHub</div>
-            <div class="link-desc">Code source et documentation des projets (Atelier 2 & Atelier 4)</div>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/mehdi-trabelsi-555643280/" target="_blank">
-          <span class="link-icon">in</span>
-          <span>
-            <div>Profil LinkedIn</div>
-            <div class="link-desc">Identité professionnelle en ligne et parcours</div>
-          </span>
-        </a>
-      </li>
-    </ul>
-  </section>
+</div>
+
+<p>
+Les réalisations présentées couvrent les compétences du bloc 1
+« Support et mise à disposition de services informatiques »,
+à travers des ateliers de professionnalisation et des stages en entreprise.
+</p>
+
+</section>
+
+<!-- SYNTHÈSE -->
+<section>
+<h2>Tableau de synthèse</h2>
+
+<table>
+<tr>
+<th>Réalisation</th>
+<th>B1.1</th>
+<th>B1.2</th>
+<th>B1.5</th>
+</tr>
+
+<tr>
+<td><a href="atelier2.html">Atelier 2</a></td>
+<td>✔</td><td>✔</td><td></td>
+</tr>
+
+<tr>
+<td><a href="atelier4.html">Atelier 4</a></td>
+<td>✔</td><td>✔</td><td>✔</td>
+</tr>
+
+<tr>
+<td><a href="stage1.html">Stage 1</a></td>
+<td>✔</td><td>✔</td><td>✔</td>
+</tr>
+
+<tr>
+<td><a href="stage2.html">Stage 2</a></td>
+<td>✔</td><td>✔</td><td>✔</td>
+</tr>
+
+</table>
+
+</section>
+
+<!-- EPREUVE -->
+<section>
+<h2>Organisation de l’épreuve</h2>
+
+<p>
+L’épreuve E5 se déroule en deux parties :
+</p>
+
+<ul>
+<li>Présentation du parcours de professionnalisation (10 minutes)</li>
+<li>Entretien avec le jury (30 minutes)</li>
+</ul>
+
+</section>
+
+<!-- VIDEO -->
+<section>
+<h2>Vidéo de présentation</h2>
+
+<p>
+La vidéo présente mon parcours, mes projets (ateliers et stages),
+ainsi que les compétences acquises dans le domaine des systèmes et réseaux.
+</p>
+
+<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin-top:1rem;">
+  <iframe
+    src="https://www.youtube.com/embed/SGogW9vFrEw"
+    frameborder="0"
+    allowfullscreen
+    style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:10px;">
+  </iframe>
+</div>
+
+</section>
+
+<!-- RESSOURCES -->
+<section>
+<h2>Ressources</h2>
+
+<ul class="links-list">
+<li><a href="index.html">Portfolio complet</a></li>
+<li><a href="tableau-synthese-e5.xlsx">Tableau de synthèse</a></li>
+<li><a href="https://github.com/USER75MA" target="_blank">GitHub</a></li>
+<li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+</ul>
+
+</section>
+
+<!-- CONCLUSION -->
+<section>
+<h2>Conclusion</h2>
+
+<p>
+Ce portfolio présente l’ensemble de mon parcours de professionnalisation
+ainsi que les compétences acquises dans le domaine des systèmes et réseaux.
+</p>
+
+<p>
+Les projets réalisés illustrent ma capacité à mettre en place,
+administrer et sécuriser des services informatiques dans un environnement professionnel.
+</p>
+
+</section>
 
 </div>
 
 <footer>
-  <p>Mehdi Trabelsi · BTS SIO SISR · CNED · Session 2025–2026 · Épreuve E5 – Coefficient 4</p>
-  <p style="margin-top:.4rem;"><a href="index.html">Retour au portfolio</a> · <a href="https://github.com/USER75MA" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/mehdi-trabelsi-555643280/" target="_blank">LinkedIn</a></p>
+Portfolio BTS SIO SISR – Mehdi Trabelsi
 </footer>
 
 </body>
