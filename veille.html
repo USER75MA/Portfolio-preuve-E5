@@ -1,107 +1,362 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veille technologique | Portfolio BTS SIO SISR</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #f8f9fb;
-      margin: 0;
-      color: #1c2333;
-      line-height: 1.7;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-    }
-
-    h1 {
-      color: #0f1b2d;
-    }
-
-    h2 {
-      margin-top: 2rem;
-      color: #1a56db;
-    }
-
-    .box {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 1px solid #e5e7eb;
-      margin-top: 1rem;
-    }
-
-    ul {
-      margin-top: 0.5rem;
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille technologique – Mehdi Trabelsi BTS SIO SISR</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--navy:#0f1b2d;--blue:#1a56db;--blue-l:#e8f0fe;--gray:#6b7280;--light:#f8f9fb;--white:#ffffff;--border:#e5e7eb;--text:#1c2333;--radius:10px;--red:#dc2626;--red-l:#fee2e2;--green:#059669;--green-l:#d1fae5;--orange:#d97706;--orange-l:#fef3c7;--purple:#7c3aed;--purple-l:#ede9fe;--teal:#0d9488;--teal-l:#ccfbf1}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--light);color:var(--text);font-size:16px;line-height:1.7}
+  nav{position:sticky;top:0;z-index:100;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:60px;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+  .nav-brand{font-family:'DM Mono',monospace;font-size:.85rem;color:#7dd3fc;letter-spacing:.06em;text-decoration:none}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:#cbd5e1;text-decoration:none;font-size:.9rem;transition:color .2s}
+  .nav-links a:hover{color:var(--white)}
+  .hero-wrap{background:var(--navy)}
+  .hero{max-width:860px;margin:0 auto;padding:6rem 2.5rem 5rem;display:flex;flex-direction:column;align-items:flex-start}
+  .hero-tag{font-family:'DM Mono',monospace;font-size:.78rem;color:#7dd3fc;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;background:rgba(125,211,252,.08);border:1px solid rgba(125,211,252,.2);padding:.3rem .8rem;border-radius:4px}
+  .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600;line-height:1.15;margin-bottom:1rem;color:var(--white)}
+  .hero h1 span{color:#7dd3fc}
+  .hero>p{color:#94a3b8;font-size:1.05rem;max-width:580px;margin-bottom:2rem;font-weight:300}
+  .hero-meta{display:flex;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:#64748b}
+  .hero-meta span{display:flex;align-items:center;gap:.4rem}
+  .hero-meta strong{color:#94a3b8}
+  .wrapper{max-width:860px;margin:0 auto;padding:0 2.5rem 5rem}
+  section{margin-top:4rem}
+  .section-label{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
+  h2{font-size:1.55rem;font-weight:600;color:var(--navy);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:2px solid var(--border)}
+  p{color:#374151;margin-bottom:.8rem}
+  .themes-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
+  .theme-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.6rem;transition:box-shadow .2s,transform .2s}
+  .theme-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+  .theme-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.9rem}
+  .theme-card h3{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:.3rem}
+  .theme-card p{font-size:.84rem;color:var(--gray);margin-bottom:0;line-height:1.55}
+  .theme-tag{display:inline-block;margin-top:.6rem;font-family:'DM Mono',monospace;font-size:.7rem;padding:.2rem .6rem;border-radius:4px;font-weight:500}
+  .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
+  .tool-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:flex-start}
+  .tool-logo{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+  .tool-card h3{font-size:.92rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+  .tool-card p{font-size:.82rem;color:var(--gray);margin-bottom:0}
+  .tool-usage{font-family:'DM Mono',monospace;font-size:.68rem;margin-top:.4rem;padding:.18rem .5rem;border-radius:4px;display:inline-block}
+  .sources{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+  .source{display:flex;align-items:center;gap:1rem;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1.2rem;text-decoration:none;color:var(--text);transition:border-color .2s,box-shadow .2s}
+  .source:hover{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,86,219,.08)}
+  .source-icon{width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+  .source-info{flex:1}
+  .source-info strong{display:block;font-size:.9rem;color:var(--navy);font-weight:600}
+  .source-info span{font-size:.8rem;color:var(--gray)}
+  .source-platform{font-family:'DM Mono',monospace;font-size:.7rem;padding:.2rem .55rem;border-radius:4px;flex-shrink:0}
+  .articles{display:flex;flex-direction:column;gap:.8rem;margin-top:1rem}
+  .article{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem}
+  .article-top{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem}
+  .article-cat{font-family:'DM Mono',monospace;font-size:.7rem;padding:.2rem .6rem;border-radius:4px;font-weight:500;flex-shrink:0}
+  .article-date{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--gray);margin-left:auto}
+  .article h3{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:.3rem}
+  .article p{font-size:.84rem;color:var(--gray);margin-bottom:0;line-height:1.55}
+  .article-source{font-size:.78rem;color:var(--blue);margin-top:.4rem;display:block}
+  .projet-pro{background:linear-gradient(135deg,var(--navy) 60%,#1a3a6b);border-radius:var(--radius);padding:2rem 2.2rem;margin-top:1.5rem;display:flex;gap:1.5rem;align-items:flex-start}
+  .projet-icon{font-size:2.5rem;flex-shrink:0}
+  .projet-pro h3{color:var(--white);font-size:1.1rem;font-weight:600;margin-bottom:.4rem}
+  .projet-pro p{color:#94a3b8;font-size:.9rem;margin-bottom:.8rem}
+  .projet-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+  .projet-tag{background:rgba(125,211,252,.12);border:1px solid rgba(125,211,252,.25);color:#7dd3fc;font-family:'DM Mono',monospace;font-size:.72rem;padding:.25rem .65rem;border-radius:4px}
+  .comp-veille{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius);padding:.75rem 1.2rem;font-size:.88rem;display:flex;align-items:center;gap:.8rem;margin-top:.6rem}
+  .comp-code{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--blue);font-weight:500;min-width:40px}
+  .comp-label{color:var(--text);font-weight:500}
+  .comp-detail{color:var(--gray);font-size:.8rem;margin-left:auto;text-align:right}
+  footer{background:var(--navy);color:#64748b;text-align:center;padding:2rem;font-size:.82rem;margin-top:5rem}
+  footer a{color:#7dd3fc;text-decoration:none}
+  @media(max-width:640px){.themes-grid,.tools-grid{grid-template-columns:1fr}nav{padding:0 1.2rem}.nav-links{gap:1rem}.hero,.wrapper{padding-left:1.2rem;padding-right:1.2rem}}
+</style>
 </head>
 <body>
 
-<div class="container">
+<nav>
+  <a class="nav-brand" href="index.html">← PORTFOLIO / BTS SIO SISR</a>
+  <ul class="nav-links">
+    <li><a href="#themes">Thèmes</a></li>
+    <li><a href="#outils">Outils</a></li>
+    <li><a href="#sources">Sources</a></li>
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="#projet">Projet pro</a></li>
+  </ul>
+</nav>
 
-  <h1>Veille technologique</h1>
-
-  <div class="box">
-    <h2>Objectif de la veille</h2>
-    <p>
-      Dans le cadre de ma formation en BTS SIO SISR, je réalise une veille technologique afin de rester informé
-      des évolutions dans les domaines de la cybersécurité et des réseaux. Cette veille me permet de mieux comprendre
-      les menaces actuelles, les nouvelles technologies et les bonnes pratiques utilisées en entreprise.
-    </p>
+<div class="hero-wrap">
+  <div class="hero" id="top">
+    <div class="hero-tag">Développement professionnel – B1.6</div>
+    <h1>Veille <span>technologique</span></h1>
+    <p>Dispositif de veille active sur les évolutions des infrastructures réseaux, de la cybersécurité, des systèmes Linux et de l'automatisation — domaines au cœur du métier SISR et de mon projet professionnel vers la sécurité informatique.</p>
+    <div class="hero-meta">
+      <span>🔁 <strong>Fréquence :</strong> Hebdomadaire</span>
+      <span>🎯 <strong>Objectif :</strong> Administrateur sécurité</span>
+      <span>🎓 <strong>Formation :</strong> BTS SIO SISR – CNED</span>
+    </div>
   </div>
+</div>
 
-  <div class="box">
-    <h2>Thématiques suivies</h2>
-    <ul>
-      <li>Cybersécurité (failles, attaques, ransomware)</li>
-      <li>Réseaux (infrastructures, VLAN, sécurité réseau)</li>
-      <li>Systèmes (Linux, Windows, déploiement)</li>
-    </ul>
-  </div>
+<div class="wrapper">
 
-  <div class="box">
-    <h2>Outils et sources utilisés</h2>
-    <ul>
-      <li>YouTube (contenus techniques et vulgarisation)</li>
-      <li>Reddit (retours d’expérience et discussions techniques)</li>
-      <li>Recherche Google pour approfondir certains sujets</li>
-      <li>Utilisation d’outils d’intelligence artificielle comme Perplexity pour explorer rapidement des sujets</li>
-    </ul>
+  <section id="themes">
+    <div class="section-label">01 — Thèmes de veille</div>
+    <h2>Domaines surveillés</h2>
+    <p>Ma veille couvre 5 domaines directement liés à mon option SISR et à mon projet professionnel en cybersécurité.</p>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--red-l)">🔐</div>
+        <h3>Cybersécurité & vulnérabilités</h3>
+        <p>Suivi des CVE critiques, nouvelles attaques (ransomware, phishing, zero-day), bonnes pratiques de durcissement et actualités des incidents majeurs.</p>
+        <span class="theme-tag" style="background:var(--red-l);color:var(--red)">Prioritaire</span>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--blue-l)">🌐</div>
+        <h3>Réseaux & protocoles</h3>
+        <p>Évolutions des protocoles (BGP, OSPF, IPv6), SD-WAN, architectures Zero Trust, nouvelles normes Wi-Fi et gestion des infrastructures modernes.</p>
+        <span class="theme-tag" style="background:var(--blue-l);color:var(--blue)">SISR core</span>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--orange-l)">🐧</div>
+        <h3>Linux & systèmes</h3>
+        <p>Nouvelles versions de distributions (Debian, Ubuntu Server), administration système, gestion des permissions, systemd, conteneurisation avec Docker.</p>
+        <span class="theme-tag" style="background:var(--orange-l);color:var(--orange)">Quotidien</span>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--teal-l)">⚙️</div>
+        <h3>Automatisation & scripting</h3>
+        <p>Bash, Powershell, Ansible — outils et méthodes pour automatiser les tâches d'administration système et réseau, Infrastructure as Code.</p>
+        <span class="theme-tag" style="background:var(--teal-l);color:var(--teal)">Montée en compétence</span>
+      </div>
+      <div class="theme-card" style="grid-column:1/-1">
+        <div class="theme-icon" style="background:var(--purple-l)">🤖</div>
+        <h3>IA appliquée à l'informatique</h3>
+        <p>Usage de l'IA dans les outils de cybersécurité (détection d'anomalies, SIEM, SOC automatisé), automatisation intelligente des tâches IT et impact des LLM sur les métiers de l'infrastructure SISR.</p>
+        <span class="theme-tag" style="background:var(--purple-l);color:var(--purple)">Émergent</span>
+      </div>
+    </div>
+  </section>
 
-    <p>
-      Les informations obtenues via l’intelligence artificielle sont systématiquement vérifiées à l’aide de sources fiables
-      afin d’éviter les erreurs ou les approximations.
-    </p>
-  </div>
+  <section id="outils">
+    <div class="section-label">02 — Outils de veille</div>
+    <h2>Dispositif de veille</h2>
+    <p>J'utilise une combinaison d'outils pour assurer une veille régulière, diversifiée et organisée sur mes thèmes de prédilection.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-logo" style="background:#FF4500;color:white">r/</div>
+        <div>
+          <h3>Reddit</h3>
+          <p>Subreddits techniques spécialisés : discussions communautaires, retours d'expérience terrain, nouvelles vulnérabilités partagées par des praticiens.</p>
+          <span class="tool-usage" style="background:var(--red-l);color:var(--red)">Plusieurs fois / semaine</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo" style="background:#FF0000;color:white">▶</div>
+        <div>
+          <h3>YouTube</h3>
+          <p>Chaînes de vulgarisation technique : compréhension de concepts réseau, démos de cyberattaques, conférences DEF CON et Black Hat.</p>
+          <span class="tool-usage" style="background:var(--red-l);color:var(--red)">Hebdomadaire</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo" style="background:#000;color:white">✕</div>
+        <div>
+          <h3>Twitter / X</h3>
+          <p>Suivi de chercheurs en sécurité, éditeurs de solutions et institutions (ANSSI, CERT-FR) pour une veille en temps réel sur les incidents.</p>
+          <span class="tool-usage" style="background:#f3f4f6;color:#374151">Quotidien</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo" style="background:var(--blue-l)">🔔</div>
+        <div>
+          <h3>Google Alertes</h3>
+          <p>Alertes automatiques sur des mots-clés ciblés : « CVE critique », « ransomware 2025 », « ANSSI », « Linux vulnerability ».</p>
+          <span class="tool-usage" style="background:var(--blue-l);color:var(--blue)">Alertes automatiques</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="box">
-    <h2>Exemples de sujets étudiés</h2>
-    <ul>
-      <li>Fonctionnement des attaques par ransomware</li>
-      <li>Configuration et sécurisation des réseaux (VLAN, firewall)</li>
-      <li>Bonnes pratiques de sécurité sous Linux</li>
-      <li>Évolutions des systèmes Windows et migration vers Windows 11</li>
-    </ul>
-  </div>
+  <section id="sources">
+    <div class="section-label">03 — Sources suivies</div>
+    <h2>Subreddits, chaînes & comptes</h2>
 
-  <div class="box">
-    <h2>Apports de la veille</h2>
-    <p>
-      Cette veille me permet de développer mes compétences techniques et de mieux comprendre les problématiques
-      rencontrées en entreprise. Elle me permet également d’être plus autonome face à de nouvelles situations et
-      d’anticiper certaines évolutions technologiques.
-    </p>
-  </div>
+    <p style="font-weight:600;color:var(--navy);margin-bottom:.5rem">Reddit</p>
+    <div class="sources">
+      <a class="source" href="https://www.reddit.com/r/netsec/" target="_blank">
+        <div class="source-icon" style="background:#FF4500;color:white">r/</div>
+        <div class="source-info"><strong>r/netsec</strong><span>Actualités et recherches en sécurité réseau — CVE, outils offensifs/défensifs, publications académiques</span></div>
+        <span class="source-platform" style="background:var(--red-l);color:var(--red)">Cybersec</span>
+      </a>
+      <a class="source" href="https://www.reddit.com/r/sysadmin/" target="_blank">
+        <div class="source-icon" style="background:#FF4500;color:white">r/</div>
+        <div class="source-info"><strong>r/sysadmin</strong><span>Communauté d'administrateurs systèmes : retours terrain, bonnes pratiques, incidents réels</span></div>
+        <span class="source-platform" style="background:var(--orange-l);color:var(--orange)">Sysadmin</span>
+      </a>
+      <a class="source" href="https://www.reddit.com/r/homelab/" target="_blank">
+        <div class="source-icon" style="background:#FF4500;color:white">r/</div>
+        <div class="source-info"><strong>r/homelab</strong><span>Lab personnel et expérimentation : virtualisation, réseaux, automatisation à la maison</span></div>
+        <span class="source-platform" style="background:var(--blue-l);color:var(--blue)">Réseaux</span>
+      </a>
+      <a class="source" href="https://www.reddit.com/r/linuxadmin/" target="_blank">
+        <div class="source-icon" style="background:#FF4500;color:white">r/</div>
+        <div class="source-info"><strong>r/linuxadmin</strong><span>Administration Linux, scripts, gestion des serveurs et résolution de problèmes</span></div>
+        <span class="source-platform" style="background:var(--orange-l);color:var(--orange)">Linux</span>
+      </a>
+    </div>
+
+    <p style="font-weight:600;color:var(--navy);margin-bottom:.5rem;margin-top:1.5rem">YouTube</p>
+    <div class="sources">
+      <a class="source" href="https://www.youtube.com/@NetworkChuck" target="_blank">
+        <div class="source-icon" style="background:#FF0000;color:white">▶</div>
+        <div class="source-info"><strong>NetworkChuck</strong><span>Tutoriels réseau, Linux, cybersécurité et cloud — pédagogie claire adaptée aux profils SISR</span></div>
+        <span class="source-platform" style="background:var(--blue-l);color:var(--blue)">Réseaux / Linux</span>
+      </a>
+      <a class="source" href="https://www.youtube.com/@davidbombal" target="_blank">
+        <div class="source-icon" style="background:#FF0000;color:white">▶</div>
+        <div class="source-info"><strong>David Bombal</strong><span>Réseaux Cisco, cybersécurité éthique, préparation aux certifications (CCNA, Security+)</span></div>
+        <span class="source-platform" style="background:var(--red-l);color:var(--red)">Cybersec</span>
+      </a>
+      <a class="source" href="https://www.youtube.com/@LiveOverflow" target="_blank">
+        <div class="source-icon" style="background:#FF0000;color:white">▶</div>
+        <div class="source-info"><strong>LiveOverflow</strong><span>Hacking éthique, CTF, exploitation de vulnérabilités — approche technique et pédagogique</span></div>
+        <span class="source-platform" style="background:var(--red-l);color:var(--red)">Cybersec</span>
+      </a>
+    </div>
+
+    <p style="font-weight:600;color:var(--navy);margin-bottom:.5rem;margin-top:1.5rem">Twitter / X & Institutions</p>
+    <div class="sources">
+      <a class="source" href="https://twitter.com/anssi_fr" target="_blank">
+        <div class="source-icon" style="background:#000;color:white">✕</div>
+        <div class="source-info"><strong>@anssi_fr</strong><span>Agence Nationale de la Sécurité des SI — alertes et recommandations officielles françaises</span></div>
+        <span class="source-platform" style="background:var(--red-l);color:var(--red)">Officiel</span>
+      </a>
+      <a class="source" href="https://twitter.com/certfr" target="_blank">
+        <div class="source-icon" style="background:#000;color:white">✕</div>
+        <div class="source-info"><strong>@certfr</strong><span>CERT-FR : avis de sécurité, bulletins d'alerte, vulnérabilités critiques en temps réel</span></div>
+        <span class="source-platform" style="background:var(--red-l);color:var(--red)">Officiel</span>
+      </a>
+      <a class="source" href="https://twitter.com/GossiTheDog" target="_blank">
+        <div class="source-icon" style="background:#000;color:white">✕</div>
+        <div class="source-info"><strong>@GossiTheDog</strong><span>Kevin Beaumont — chercheur en sécurité, analyse des incidents majeurs et ransomwares en temps réel</span></div>
+        <span class="source-platform" style="background:var(--red-l);color:var(--red)">Cybersec</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="articles">
+    <div class="section-label">04 — Articles & actualités</div>
+    <h2>Sujets suivis récemment</h2>
+    <p>Sélection de sujets issus de ma veille qui ont enrichi ma compréhension des enjeux SISR et cybersécurité.</p>
+    <div class="articles">
+
+      <div class="article">
+        <div class="article-top">
+          <span class="article-cat" style="background:var(--red-l);color:var(--red)">Cybersécurité</span>
+          <span class="article-date">Fév. 2025</span>
+        </div>
+        <h3>Montée en puissance des attaques ransomware ciblant les PME</h3>
+        <p>Analyse de la recrudescence des attaques ransomware contre les PME françaises, vecteurs d'infection privilégiés (phishing, RDP exposé) et recommandations ANSSI pour la mise en place de plans de continuité et sauvegardes hors ligne.</p>
+        <span class="article-source">📌 Source : ANSSI / r/netsec — en lien avec la sauvegarde mysqldump et le test HAProxy de l'Atelier 4</span>
+      </div>
+
+      <div class="article">
+        <div class="article-top">
+          <span class="article-cat" style="background:var(--blue-l);color:var(--blue)">Réseaux</span>
+          <span class="article-date">Jan. 2025</span>
+        </div>
+        <h3>Zero Trust Network Access (ZTNA) : vers la fin du VPN traditionnel ?</h3>
+        <p>Comparaison des architectures Zero Trust et VPN classiques pour la sécurisation des accès distants. Le ZTNA repose sur le principe « ne jamais faire confiance, toujours vérifier », en opposition aux périmètres implicites des VPN. Suivi des déploiements en entreprise.</p>
+        <span class="article-source">📌 Source : r/sysadmin, David Bombal (YouTube)</span>
+      </div>
+
+      <div class="article">
+        <div class="article-top">
+          <span class="article-cat" style="background:var(--orange-l);color:var(--orange)">Linux</span>
+          <span class="article-date">Mar. 2025</span>
+        </div>
+        <h3>Debian 13 « Trixie » : nouveautés pour les administrateurs systèmes</h3>
+        <p>Revue des évolutions de la prochaine version stable de Debian : nouvelles versions des paquets clés (OpenSSH, Nginx, MariaDB), améliorations de sécurité par défaut — en lien direct avec les VM utilisées dans les ateliers CNED.</p>
+        <span class="article-source">📌 Source : r/linuxadmin, NetworkChuck (YouTube)</span>
+      </div>
+
+      <div class="article">
+        <div class="article-top">
+          <span class="article-cat" style="background:var(--teal-l);color:var(--teal)">Automatisation</span>
+          <span class="article-date">Fév. 2025</span>
+        </div>
+        <h3>Ansible : automatiser le déploiement de serveurs Linux</h3>
+        <p>Découverte d'Ansible comme outil d'automatisation de configuration (playbooks, inventaires, rôles). Application concrète : déploiement automatisé d'un stack Web en quelques commandes, comparé aux déploiements manuels pratiqués en formation.</p>
+        <span class="article-source">📌 Source : r/homelab, NetworkChuck (YouTube)</span>
+      </div>
+
+      <div class="article">
+        <div class="article-top">
+          <span class="article-cat" style="background:var(--purple-l);color:var(--purple)">IA</span>
+          <span class="article-date">Mar. 2026</span>
+        </div>
+        <h3>IA et SOC : les SIEM intègrent le machine learning pour détecter les menaces</h3>
+        <p>Les Security Operations Centers intègrent des modèles de ML pour détecter des comportements anormaux (UEBA). L'IA ne remplace pas l'analyste mais automatise le tri des alertes, réduisant le temps de réponse aux incidents.</p>
+        <span class="article-source">📌 Source : r/netsec, @anssi_fr (X)</span>
+      </div>
+
+      <div class="article">
+        <div class="article-top">
+          <span class="article-cat" style="background:var(--red-l);color:var(--red)">Cybersécurité</span>
+          <span class="article-date">Jan. 2026</span>
+        </div>
+        <h3>CVE-2024-3400 : vulnérabilité critique dans PAN-OS (Palo Alto)</h3>
+        <p>Étude d'une vulnérabilité de type injection de commande OS dans les pare-feux Palo Alto, exploitée activement avant le patch. Retour sur la chaîne de détection, l'analyse forensique et les indicateurs de compromission.</p>
+        <span class="article-source">📌 Source : r/netsec, @GossiTheDog (X), LiveOverflow (YouTube)</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projet">
+    <div class="section-label">05 — Projet professionnel</div>
+    <h2>Mon développement professionnel</h2>
+    <p>Ma veille technologique s'inscrit dans une démarche ciblée vers mon projet professionnel post-BTS.</p>
+
+    <div class="projet-pro">
+      <div class="projet-icon">🎯</div>
+      <div>
+        <h3>Objectif : Administrateur Sécurité / Cybersécurité</h3>
+        <p>Après le BTS SIO SISR, je souhaite me spécialiser dans la cybersécurité des infrastructures — domaine en forte tension de recrutement où les profils SISR sont particulièrement recherchés. Ma veille me permet d'anticiper les compétences attendues et de construire un profil technique cohérent avec les offres du secteur.</p>
+        <div class="projet-tags">
+          <span class="projet-tag">SOC / SIEM</span>
+          <span class="projet-tag">Pentest</span>
+          <span class="projet-tag">CompTIA Security+</span>
+          <span class="projet-tag">CCNA</span>
+          <span class="projet-tag">Forensique</span>
+          <span class="projet-tag">Zero Trust</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem">
+      <div class="section-label" style="margin-bottom:.8rem">Compétence couverte</div>
+      <div class="comp-veille">
+        <span class="comp-code">B1.6</span>
+        <span class="comp-label">Organiser son développement professionnel</span>
+        <span class="comp-detail">Veille, identité pro, projet professionnel</span>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap">
+      <a href="https://www.linkedin.com/in/mehdi-trabelsi-555643280/" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-size:.88rem;font-weight:500">in Profil LinkedIn →</a>
+      <a href="https://github.com/USER75MA" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-size:.88rem;font-weight:500">⌥ GitHub →</a>
+    </div>
+  </section>
 
 </div>
+
+<footer>
+  <p>Mehdi Trabelsi · BTS SIO SISR · CNED · Session 2025–2026 · Veille technologique</p>
+  <p style="margin-top:.4rem"><a href="index.html">Retour au portfolio</a> · <a href="e5.html">Épreuve E5</a> · <a href="https://github.com/USER75MA" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/mehdi-trabelsi-555643280/" target="_blank">LinkedIn</a></p>
+</footer>
 
 </body>
 </html>
